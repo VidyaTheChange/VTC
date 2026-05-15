@@ -191,6 +191,11 @@ footer{padding:2.5rem 2rem;border-top:0.5px solid var(--border);text-align:cente
   .how-arrow{display:none}
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+const SUPA_URL='https://ninrmohzytxcygpolqsh.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
+</script>
 </head>
 <body>
 
@@ -412,7 +417,7 @@ footer{padding:2.5rem 2rem;border-top:0.5px solid var(--border);text-align:cente
           <input type="text" placeholder="Your name"/>
           <input type="email" placeholder="Email address"/>
           <input type="tel" placeholder="WhatsApp number"/>
-          <select>
+          <select id="vol-role">
             <option value="">I want to…</option>
             <option>Volunteer as a facilitator</option>
             <option>Bring programs to my school</option>
@@ -420,7 +425,9 @@ footer{padding:2.5rem 2rem;border-top:0.5px solid var(--border);text-align:cente
             <option>Fund a specific program</option>
             <option>Spread the word / media</option>
           </select>
-          <button class="btn-primary" onclick="this.textContent='Thank you! We will reach out soon ✓'">Submit →</button>
+          <button class="btn-primary" id="vol-submit" onclick="submitVolunteer()">Submit →</button>
+          <div id="vol-msg" style="font-size:12px;color:var(--green);display:none;font-weight:600">✓ Thank you! We will reach out soon.</div>
+          <div id="vol-err" style="font-size:12px;color:#c0392b;display:none">Something went wrong. Please try again.</div>
         </div>
       </div>
     </div>
@@ -536,6 +543,46 @@ const sendChat=async()=>{
   }catch(e){t.textContent='Something went wrong. Please try again.';}
 };
 const sendPill=el=>{document.getElementById('chatInput').value=el.textContent;sendChat();};
+
+// Volunteer form inputs
+const vName=()=>document.querySelectorAll('.vol-form input')[0].value.trim();
+const vEmail=()=>document.querySelectorAll('.vol-form input')[1].value.trim();
+const vPhone=()=>document.querySelectorAll('.vol-form input')[2].value.trim();
+const vRole=()=>document.getElementById('vol-role').value;
+
+const submitVolunteer=async()=>{
+  const name=vName(),email=vEmail(),phone=vPhone(),role=vRole();
+  const btn=document.getElementById('vol-submit');
+  const msg=document.getElementById('vol-msg');
+  const err=document.getElementById('vol-err');
+  msg.style.display='none';err.style.display='none';
+  if(!name||!email){err.textContent='Please enter your name and email.';err.style.display='block';return;}
+  btn.textContent='Submitting…';btn.disabled=true;
+  try{
+    const r=await fetch(`${SUPA_URL}/rest/v1/volunteers`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SUPA_KEY,
+        'Authorization':'Bearer '+SUPA_KEY,
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify({name,email,phone,role,created_at:new Date().toISOString()})
+    });
+    if(r.ok||r.status===201){
+      msg.style.display='block';
+      btn.style.display='none';
+      document.querySelectorAll('.vol-form input').forEach(i=>i.value='');
+      document.getElementById('vol-role').value='';
+    } else {
+      throw new Error('Failed');
+    }
+  }catch(e){
+    err.textContent='Something went wrong. Please try again.';
+    err.style.display='block';
+    btn.textContent='Submit →';btn.disabled=false;
+  }
+};
 </script>
 </body>
 </html>
