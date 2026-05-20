@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Team — Vidya The Change</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#ffffff;--bg2:#fffcf5;--bg3:#fff8e8;
+  --card:#ffffff;--border:#ecdfc8;--text:#1a1200;--muted:#8a7050;
+  --orange:#e86400;--yellow:#f5a800;
+  --font:'Georgia',serif;--sans:'Inter',sans-serif
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);z-index:100;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);
+  border:1px solid var(--border);border-radius:100px;
+  padding:0.55rem 1.4rem;display:flex;align-items:center;gap:1.75rem;
+  box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+.nav-logo{font-size:13px;font-weight:700;color:var(--orange)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:12px;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-back{background:var(--orange);color:#fff;border:none;padding:0.4rem 1.1rem;
+  border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;text-decoration:none}
+
+/* HERO */
+.team-hero{padding:8rem 2rem 4rem;text-align:center;
+  border-bottom:1px solid var(--border);background:var(--bg2)}
+.section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);
+  text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
+h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:400;font-family:var(--font);
+  letter-spacing:-0.02em;margin-bottom:0.75rem}
+h1 strong{font-weight:700;color:var(--orange)}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:480px;margin:0 auto}
+
+/* TEAM LIST */
+.team-wrap{max-width:700px;margin:0 auto;padding:5rem 2rem}
+.team-list{display:flex;flex-direction:column;gap:0}
+.team-item{display:grid;grid-template-columns:48px 1fr auto;
+  align-items:center;gap:1.25rem;
+  padding:1.25rem 0;border-bottom:1px solid var(--border);transition:background 0.15s}
+.team-item:last-child{border-bottom:none}
+.team-initial{width:48px;height:48px;border-radius:10px;
+  background:var(--bg3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;font-weight:700;color:var(--orange);
+  font-family:var(--font);flex-shrink:0}
+.team-info{}
+.team-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px}
+.team-role{font-size:12px;color:var(--muted)}
+.team-tag{font-size:10px;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--orange);
+  background:var(--bg3);border:1px solid #f0d878;
+  border-radius:4px;padding:3px 8px;white-space:nowrap}
+
+/* JOIN */
+.join-box{background:var(--orange);border-radius:16px;padding:2.5rem;
+  text-align:center;max-width:700px;margin:0 auto 4rem}
+.join-box h3{font-size:1.4rem;font-weight:400;font-family:var(--font);
+  color:#fff;margin-bottom:0.4rem}
+.join-box h3 strong{font-weight:700}
+.join-box p{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:1.25rem}
+.btn-white{background:#fff;color:var(--orange);border:none;
+  padding:0.7rem 1.5rem;border-radius:8px;font-size:13px;font-weight:700;
+  cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+.btn-white:hover{background:var(--yellow);color:#3a2000}
+
+footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
+  text-align:center;background:var(--bg2)}
+.footer-copy{font-size:11px;color:var(--muted)}
+
+@media(max-width:640px){
+  nav{padding:0.45rem 0.9rem;gap:0.75rem}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Vidya The Change</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#programs">Programs</a>
+    <a href="index.html#impact">Impact</a>
+    <a href="index.html#involve">Get Involved</a>
+  </div>
+  <a href="index.html#contact" class="nav-back">Contact us</a>
+</nav>
+
+<div class="team-hero">
+  <div class="section-tag">The people behind the mission</div>
+  <h1>Meet our <strong>team</strong></h1>
+  <p class="hero-sub">A passionate group of changemakers working to bring 21st century skills to every rural student across Andhra Pradesh.</p>
+</div>
+
+<div class="team-wrap">
+  <div class="team-list">
+    <div class="team-item">
+      <div class="team-initial">S</div>
+      <div class="team-info">
+        <div class="team-name">Sreevidya Bhoomireddy</div>
+        <div class="team-role">A firm believer that every child is unique and deserves to be nurtured in a way that honours who they truly are. Since 2022, every program designed, every school visited, and every student reached is a step toward a rural Andhra Pradesh where no child is left behind.</div>
+      </div>
+      <div class="team-tag">Founder</div>
+    </div>
+    <div class="team-item">
+      <div class="team-initial">V</div>
+      <div class="team-info">
+        <div class="team-name">Vijaya Kumar P</div>
+        <div class="team-role">Grew up in a farming family and believes in education's power to uplift rural communities. Actively contributes to VTC's mission alongside his work in the IT sector.</div>
+      </div>
+    </div>
+    <div class="team-item">
+      <div class="team-initial">A</div>
+      <div class="team-info">
+        <div class="team-name">Arjun</div>
+        <div class="team-role">Arjun mentors students with his technical expertise, helping them build real skills and think beyond the classroom.</div>
+      </div>
+    </div>
+    <div class="team-item">
+      <div class="team-initial">B</div>
+      <div class="team-info">
+        <div class="team-name">Bhavishya</div>
+        <div class="team-role">Guides the team with expertise in education and community development.</div>
+      </div>
+    </div>
+    <div class="team-item">
+      <div class="team-initial">N</div>
+      <div class="team-info">
+        <div class="team-name">Niveditha M</div>
+        <div class="team-role">Supports program delivery and builds connections between VTC and the schools it serves.</div>
+      </div>
+    </div>
+    <div class="team-item">
+      <div class="team-initial">A</div>
+      <div class="team-info">
+        <div class="team-name">Alekhya G</div>
+        <div class="team-role">Works on program delivery and student engagement across Anantapur.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:0 2rem">
+  <div class="join-box">
+    <h3>Want to <strong>join the mission?</strong></h3>
+    <p>We are always looking for passionate people to volunteer, facilitate, or partner with us.</p>
+    <a href="index.html#involve" class="btn-white">Get involved →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2024 Vidya The Change · Registered Society · Tadipatri, Anantapur District, AP</div>
+</footer>
+
+</body>
+</html>
