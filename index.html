@@ -8,16 +8,18 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#ffffff;
-  --bg2:#fffcf5;
-  --bg3:#fff8e8;
+  --bg2:#f5f7fa;
+  --bg3:#eef1f7;
   --card:#ffffff;
-  --border:#ecdfc8;
-  --text:#1a1200;
-  --muted:#8a7050;
+  --border:#dde3ee;
+  --text:#0f1f3d;
+  --muted:#5a6a85;
   --orange:#e86400;
   --orange-light:#fff3e8;
   --yellow:#f5a800;
   --yellow-light:#fffbe6;
+  --navy:#0f2d6b;
+  --navy-light:#e8edf8;
   --green:#2a7a3f;
   --font:'Georgia',serif;
   --sans:'Inter',sans-serif
@@ -101,15 +103,15 @@ h1 strong{font-weight:700;color:var(--orange)}
 .aud-desc{font-size:12px;color:var(--muted);margin-left:auto;text-align:right}
 
 /* STATS */
-.stats{padding:4rem 2rem;background:var(--bg2);border-bottom:1px solid var(--border)}
+.stats{padding:4rem 2rem;background:var(--navy);border-bottom:1px solid #0a2255}
 .stats-inner{max-width:900px;margin:0 auto;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.stat-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid var(--border)}
+  gap:0;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden}
+.stat-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
 .stat-item:last-child{border-right:none}
 .stat-num{font-size:3rem;font-weight:700;letter-spacing:-0.03em;
   color:var(--orange);font-family:var(--font);line-height:1}
-.stat-label{font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:0.04em;line-height:1.4}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.04em;line-height:1.4}
 
 /* SECTIONS */
 section{padding:5rem 2rem}
@@ -122,44 +124,7 @@ h2 strong{font-weight:700;color:var(--text)}
 h2 em{font-style:normal;color:var(--orange)}
 .section-sub{font-size:0.9rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.7}
 
-/* PROGRAMS */
-.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1px;
-  background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.prog-card{background:#fff;padding:1.75rem;transition:background 0.2s;position:relative}
-.prog-card:hover{background:var(--orange-light)}
-.prog-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
-.prog-icon{font-size:1.5rem}
-.prog-level{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:700;color:var(--muted);background:var(--bg2);
-  border:1px solid var(--border);border-radius:4px;padding:2px 7px;white-space:nowrap}
-.prog-card h3{font-size:14px;font-weight:700;margin-bottom:0.4rem;color:var(--text)}
-.prog-card p{font-size:12px;color:var(--muted);line-height:1.65}
-.prog-skills{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.85rem}
-.skill-tag{font-size:10px;background:var(--bg3);border:1px solid var(--border);
-  border-radius:4px;padding:2px 7px;color:var(--muted);font-weight:500}
 
-/* CREATORS SPOTLIGHT */
-.creators-box{margin-top:1.5rem;border:1px solid var(--border);border-radius:16px;
-  overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
-.creators-left{background:var(--orange);padding:2.5rem}
-.creators-left .section-tag{color:rgba(255,255,255,0.65)}
-.creators-left h3{font-size:2rem;font-weight:400;font-family:var(--font);
-  color:#fff;line-height:1.15;margin-bottom:0.75rem}
-.creators-left h3 strong{font-weight:700}
-.creators-left p{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:1.5rem}
-.btn-white{background:#fff;color:var(--orange);border:none;
-  padding:0.7rem 1.4rem;border-radius:8px;font-size:12px;font-weight:700;
-  cursor:pointer;transition:all 0.2s}
-.btn-white:hover{background:var(--yellow);color:#3a2000}
-.creators-right{background:var(--yellow-light);padding:2.5rem;
-  border-left:1px solid var(--border);display:flex;flex-direction:column;justify-content:center}
-.creators-steps{display:flex;flex-direction:column;gap:1.1rem}
-.c-step{display:flex;align-items:flex-start;gap:12px}
-.c-num{width:28px;height:28px;border-radius:50%;background:var(--yellow);
-  color:#3a2000;font-size:11px;font-weight:800;display:flex;align-items:center;
-  justify-content:center;flex-shrink:0;margin-top:1px}
-.c-text h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
-.c-text p{font-size:12px;color:var(--muted);line-height:1.5}
 
 /* HOW IT WORKS */
 .how-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
@@ -386,9 +351,9 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
   <p class="hero-sub">We deliver hands-on skill development programs to primary, secondary, and college students across rural Andhra Pradesh — building creators, thinkers, and future-ready leaders.</p>
   <div class="hero-loc">📍 Based in Tadipatri, Anantapur · Building future-ready skills for every rural student across AP</div>
   <div class="hero-btns">
-    <button class="btn-orange" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">Explore our programs</button>
+    <a href="programs.html" class="btn-orange" style="text-decoration:none;display:inline-block">Explore our programs</a>
     <a href="register.html" class="btn-outline" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--text);border:1.5px solid var(--border);padding:0.8rem 1.85rem;border-radius:8px;font-size:13px;font-weight:500;transition:all 0.2s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">Student registration →</a>
-    <button class="btn-outline" onclick="document.getElementById('vol-name').scrollIntoView({behavior:'smooth'});document.getElementById('vol-name').focus()">Partner with us</button>
+    <button class="btn-outline" onclick="document.getElementById('involve').scrollIntoView({behavior:'smooth'})">Join us ↓</button>
   </div>
 
 </section>
@@ -432,75 +397,45 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
   </div>
 </div>
 
-<!-- PROGRAMS -->
+<!-- PROGRAMS TEASER -->
 <section id="programs">
   <div class="section-inner">
     <div class="section-tag">Our programs</div>
     <h2>Building <em>future-ready</em> skills</h2>
-    <p class="section-sub">Each program is built around 21st century competencies — delivered hands-on in rural government schools across Anantapur Division.</p>
-    <div class="prog-grid">
-      <div class="prog-card">
-        <div class="prog-top"><div class="prog-icon">🔔</div><div class="prog-level">All schools</div></div>
-        <h3>Interaction & Awareness Program</h3>
-        <p>Gaining insights into student needs through proactive engagement with diverse educational institutions — building community awareness about skill-based education.</p>
-        <div class="prog-skills"><span class="skill-tag">Community engagement</span><span class="skill-tag">Awareness</span><span class="skill-tag">Outreach</span></div>
+    <p class="section-sub">From the Creators Program to App Development, Personal Development and more — we deliver hands-on skill programs directly to rural students across Andhra Pradesh.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem">
+      <div style="background:var(--navy);border-radius:12px;padding:1.5rem;color:#fff">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem">🎨</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:0.25rem">Creators Program</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.55)">Ongoing · All levels</div>
       </div>
-      <div class="prog-card">
-        <div class="prog-top"><div class="prog-icon">🌱</div><div class="prog-level">Primary · Secondary</div></div>
-        <h3>Rural Skill Development</h3>
-        <p>An interactive curriculum focusing on vital 21st century skills for school children — equipping young learners with essential competencies to thrive in a competitive world.</p>
-        <div class="prog-skills"><span class="skill-tag">Critical thinking</span><span class="skill-tag">Communication</span><span class="skill-tag">Collaboration</span></div>
+      <div style="background:var(--orange-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem">✨</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:0.25rem">Talent Nurturing</div>
+        <div style="font-size:11px;color:var(--muted)">All levels</div>
       </div>
-      <div class="prog-card">
-        <div class="prog-top"><div class="prog-icon">👩‍🏫</div><div class="prog-level">Educators</div></div>
-        <h3>Teacher Training Program</h3>
-        <p>Training rural teachers on student-focused teaching methodologies — strengthening educators to deliver quality education and inspire students in government schools.</p>
-        <div class="prog-skills"><span class="skill-tag">Pedagogy</span><span class="skill-tag">Student-centred learning</span><span class="skill-tag">Mentorship</span></div>
+      <div style="background:var(--orange-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem">👩‍🏫</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:0.25rem">Teacher Training</div>
+        <div style="font-size:11px;color:var(--muted)">Educators</div>
       </div>
-      <div class="prog-card">
-        <div class="prog-top"><div class="prog-icon">🧠</div><div class="prog-level">Class 3–5</div></div>
-        <h3>Emotional Intelligence & Creativity</h3>
-        <p>Developing student self-awareness, teamwork, and joy of learning. Students show measurable growth in embracing challenges and pursuing academic interests independently.</p>
-        <div class="prog-skills"><span class="skill-tag">Self-awareness</span><span class="skill-tag">Creativity</span><span class="skill-tag">EQ</span></div>
+      <div style="background:var(--orange-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem">🤖</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:0.25rem">Artificial Intelligence Skills</div>
+        <div style="font-size:11px;color:var(--muted)">Secondary · College</div>
       </div>
-      <div class="prog-card">
-        <div class="prog-top"><div class="prog-icon">💻</div><div class="prog-level">Secondary · College</div></div>
-        <h3>App Development</h3>
-        <p>Hands-on coding and app-building workshops. Students build real apps that solve problems in their own communities — learning by making.</p>
-        <div class="prog-skills"><span class="skill-tag">Coding</span><span class="skill-tag">Problem solving</span><span class="skill-tag">Tech literacy</span></div>
+      <div style="background:var(--orange-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem">🌟</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:0.25rem">Personal Development</div>
+        <div style="font-size:11px;color:var(--muted)">All levels</div>
       </div>
-      <div class="prog-card">
-        <div class="prog-top"><div class="prog-icon">🌟</div><div class="prog-level">All levels</div></div>
-        <h3>Personal Development Skills</h3>
-        <p>Communication, leadership, goal-setting, and confidence workshops. The skills employers actually want — being taught in rural Andhra Pradesh schools.</p>
-        <div class="prog-skills"><span class="skill-tag">Leadership</span><span class="skill-tag">Communication</span><span class="skill-tag">Confidence</span></div>
+      <div style="background:var(--orange-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem">🧠</div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:0.25rem">Emotional Intelligence</div>
+        <div style="font-size:11px;color:var(--muted)">Class 3–5</div>
       </div>
     </div>
-
-    <!-- CREATORS -->
-    <div class="creators-box">
-      <div class="creators-left">
-        <div class="section-tag">Ongoing · Flagship program</div>
-        <h3>The <strong>Creators Program</strong></h3>
-        <p>Students don't just learn — they build. Every student identifies a real problem in their community and develops their own idea into a working solution. This is 21st century education in action.</p>
-        <button class="btn-white" onclick="document.getElementById('involve').scrollIntoView({behavior:'smooth'})">Bring this to your school →</button>
-      </div>
-      <div class="creators-right">
-        <div class="creators-steps">
-          <div class="c-step"><div class="c-num">1</div><div class="c-text"><h4>Discover</h4><p>Students identify a real problem in their school or village they want to solve.</p></div></div>
-          <div class="c-step"><div class="c-num">2</div><div class="c-text"><h4>Ideate</h4><p>They brainstorm and shape their own original idea with guidance from facilitators.</p></div></div>
-          <div class="c-step"><div class="c-num">3</div><div class="c-text"><h4>Build</h4><p>Students bring their idea to life — an app, product, artwork, or community initiative.</p></div></div>
-          <div class="c-step"><div class="c-num">4</div><div class="c-text"><h4>Present</h4><p>Each student presents their creation — building communication and pride in their work.</p></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CREATORS PHOTO GALLERY -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1rem;border-radius:12px;overflow:hidden">
-      <img src="images/image3.jpeg" alt="" style="width:100%;height:220px;object-fit:cover;display:block"/>
-      <img src="images/image4.jpeg" alt="" style="width:100%;height:220px;object-fit:cover;display:block"/>
-      <img src="images/image5.jpeg" alt="" style="width:100%;height:220px;object-fit:cover;display:block"/>
-    </div>
+    <a href="programs.html" class="btn-orange" style="display:inline-block;text-decoration:none">Explore all programs →</a>
   </div>
 </section>
 
@@ -576,7 +511,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
 <!-- INVOLVE -->
 <section id="involve" style="background:var(--bg2);border-top:1px solid var(--border)">
   <div class="section-inner">
-    <div class="section-tag">Take action</div>
+    <div class="section-tag">Join us</div>
     <h2>Partner with <em>us</em></h2>
     <p class="section-sub">Support our programs as a donor, school partner, volunteer facilitator, or corporate CSR partner.</p>
     <div class="involve-grid">
@@ -670,11 +605,11 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
     <div class="footer-col">
       <h4>Programs</h4>
       <ul>
-        <li><a href="#programs">Interaction & Awareness</a></li>
-        <li><a href="#programs">Rural Skill Development</a></li>
-        <li><a href="#programs">Teacher Training</a></li>
-        <li><a href="#programs">App Development</a></li>
-        <li><a href="#programs">Creators Program</a></li>
+        <li><a href="programs.html">Interaction & Awareness</a></li>
+        <li><a href="programs.html">Talent Nurturing</a></li>
+        <li><a href="programs.html">Teacher Training</a></li>
+        <li><a href="programs.html">AI Skills</a></li>
+        <li><a href="programs.html">Creators Program</a></li>
       </ul>
     </div>
     <div class="footer-col">
