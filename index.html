@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vidya The Change — Nurturing Unique Skills of Every Child</title>
+<title>Vidya The Change — 21st Century Skills for Every Child</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -28,32 +28,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);
-  box-shadow:0 1px 0 var(--border);
-  padding:0.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-size:15px;font-weight:700;color:var(--orange);font-family:var(--font)}
-.nav-center{display:flex;gap:2rem}
-.nav-center a{font-size:13px;color:var(--text);transition:color 0.2s;font-weight:500}
-.nav-center a:hover,.nav-center a.active{color:var(--orange)}
-.nav-register{background:var(--orange);color:#fff;border:none;
-  padding:0.45rem 1.1rem;border-radius:6px;font-size:12px;font-weight:600;
-  cursor:pointer;transition:all 0.2s;text-decoration:none}
-.nav-register:hover{background:#c85600}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
-  padding:4px;background:none;border:none}
-.hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;
-  background:rgba(255,255,255,0.98);z-index:99;
-  flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-size:1.3rem;font-weight:600;color:var(--text);font-family:var(--font);transition:color 0.2s}
-.mobile-menu a:hover{color:var(--orange)}
-.mob-cta{background:var(--orange);color:#fff !important;padding:0.75rem 2rem;border-radius:8px;font-size:1rem !important;font-weight:700 !important}
-.mob-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;cursor:pointer;color:var(--muted);background:none;border:none}
+
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
@@ -333,6 +308,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
   .wa-float{padding:0.75rem}
 }
 </style>
+<script src="nav.js"></script>
 </head>
 <body>
 
@@ -735,16 +711,7 @@ const sendChat=async()=>{
     msgs.push({role:'assistant',content:reply});
   }catch(e){t.textContent='Something went wrong. Please try again.';}
 };
-const toggleMenu=()=>{
-  const hamburger=document.getElementById('hamburger');
-  const mobileMenu=document.getElementById('mobileMenu');
-  if(hamburger) hamburger.classList.toggle('open');
-  if(mobileMenu) mobileMenu.classList.toggle('open');
-};
-window.addEventListener('scroll',()=>{
-  const navbar=document.getElementById('navbar');
-  if(navbar) navbar.classList.toggle('scrolled',window.scrollY>60);
-});
+
 const sendPill=el=>{document.getElementById('chatInput').value=el.textContent;sendChat();};
 </script>
 </body>
