@@ -87,7 +87,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 
 <nav id="vtc-navbar">
 <a class="nav-logo" href="/">
-  <img src="/images/logo.jpeg" alt="Vidya The Change">
+  <img src="/images/logo.png" alt="Vidya The Change">
 </a>
 <div class="nav-center">
     <a href="/" data-page="home">Home</a>
