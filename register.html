@@ -112,11 +112,11 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
       </div>
       <div class="field">
         <label>WhatsApp number <span class="req">*</span></label>
-        <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX"/>
+        <input type="tel" id="phone" placeholder="Enter your Phone Number" pattern="[0-9]{10}" maxlength="10" required/>
       </div>
       <div class="field">
         <label>Email Id <span class="req">*</span></label>
-        <input type="email" id="email" placeholder="Enter your Email Id"/>
+        <input type="email" id="email" placeholder="Enter your Email Id" required/>
       </div>
       <div class="field field-full">
         <label>Address <span class="req">*</span></label>
@@ -267,6 +267,17 @@ const submitForm=async()=>{
     err.textContent='Please fill in all required fields marked with *.';
     err.style.display='block';return;
   }
+  if(!/^[0-9]{10}$/.test(phone)){
+  err.textContent = 'Please enter a valid 10-digit phone number.';
+  err.style.display = 'block';
+  return;
+}
+
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+  err.textContent = 'Please enter a valid email address.';
+  err.style.display = 'block';
+  return;
+}
 
   btn.textContent='Submitting…';btn.disabled=true;
   try{
