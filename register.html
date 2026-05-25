@@ -235,31 +235,36 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
 const SUPA_URL='https://ninrmohzytxcygpolqsh.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
 
-const submitForm=async()=>{
-  const btn=document.getElementById('submitBtn');
-  const err=document.getElementById('errMsg');
-  const success=document.getElementById('successBox');
-  err.style.display='none';
+const form = document.getElementById('form');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // 1. reset errors FIRST
+  const btn = document.getElementById('submitBtn');
+  const err = document.getElementById('errMsg');
+  const success = document.getElementById('successBox');
+
+  // reset UI
   err.style.display = 'none';
   err.textContent = '';
 
-  // 2. get values
+  // get values
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
 
-  // 3. validation
-  if(!/^[0-9]{10}$/.test(phone)){
+  // validation
+  if (!/^[0-9]{10}$/.test(phone)) {
     err.textContent = 'Please enter a valid 10-digit phone number.';
     err.style.display = 'block';
     return;
   }
 
-  // 4. then build data
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    err.textContent = 'Please enter a valid email address.';
+    err.style.display = 'block';
+    return;
+  }
+
   const data = {
     phone,
     email,
@@ -279,39 +284,47 @@ form.addEventListener('submit', async (e) => {
     source: document.getElementById('source').value,
     created_at: new Date().toISOString()
   };
-});
-  const required=['fullname','fathername','mothername','gender','phone','email','address','school','classyear','program','reason','source'];
-  const missing=required.filter(f=>!data[f]);
-  if(missing.length){
-    err.textContent='Please fill in all required fields marked with *.';
-    err.style.display='block';return;
-  }
-  form.addEventListener('submit', async (e) => {
-  e.preventDefault();
 
-  err.style.display = 'none';
-  err.textContent = '';
+  const required = ['fullname','fathername','mothername','gender','phone','email','address','school','classyear','program','reason','source'];
+  const missing = required.filter(f => !data[f]);
 
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-
-  // validation starts
-  if(!/^[0-9]{10}$/.test(phone)){
-    err.textContent = 'Please enter a valid 10-digit phone number.';
+  if (missing.length) {
+    err.textContent = 'Please fill in all required fields marked with *.';
     err.style.display = 'block';
     return;
   }
 
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    err.textContent = 'Please enter a valid email address.';
+  // disable button AFTER validation passes
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  try {
+    const r = await fetch(`${SUPA_URL}/rest/v1/students`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (r.ok || r.status === 201) {
+      success.style.display = 'block';
+      form.reset();
+    } else {
+      throw new Error();
+    }
+
+  } catch (e) {
+    err.textContent = 'Something went wrong. Please try again.';
     err.style.display = 'block';
-    return;
   }
 
-  // continue submit (fetch to Supabase)
+  btn.textContent = 'Submit Registration →';
+  btn.disabled = false;
 });
-
-  btn.textContent='Submitting…';btn.disabled=true;
   try{
     const r=await fetch(`${SUPA_URL}/rest/v1/students`,{
       method:'POST',
