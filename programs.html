@@ -7,125 +7,83 @@
 <script src="nav.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#ffffff;--bg2:#f5f7fa;--bg3:#eef1f7;
-  --card:#ffffff;--border:#dde3ee;--text:#0f1f3d;--muted:#5a6a85;
-  --orange:#e86400;--orange-light:#fff3e8;
-  --yellow:#f5a800;--yellow-light:#fffbe6;
-  --navy:#0f2d6b;--green:#2a7a3f;
-  --font:'Georgia',serif;--sans:'Inter',sans-serif
-}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}
+body{font-family:var(--sans);line-height:1.6}
 a{text-decoration:none;color:inherit}
 
-/* HERO */
 .hero{padding:7rem 2rem 4rem;background:var(--navy);text-align:center}
-.section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);
-  text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
+.section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
 .hero .section-tag{color:rgba(255,255,255,0.5)}
-h1{font-size:clamp(2rem,4vw,3rem);font-weight:400;font-family:var(--font);
-  letter-spacing:-0.02em;margin-bottom:0.75rem;color:#fff}
+h1{font-size:clamp(2rem,4vw,3rem);font-weight:400;font-family:var(--font);letter-spacing:-0.02em;margin-bottom:0.75rem;color:#fff}
 h1 strong{font-weight:700;color:var(--orange)}
 .hero-sub{font-size:1rem;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto}
 
-/* SKILLS BAR */
 .skills-bar{background:var(--yellow);padding:1rem 2rem}
-.skills-inner{max-width:980px;margin:0 auto;
-  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center}
-.skills-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
-  font-weight:700;color:rgba(40,20,0,0.5);white-space:nowrap}
-.skill-pill{background:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.5);
-  border-radius:100px;padding:0.25rem 0.8rem;font-size:11px;font-weight:600;color:#3a2000}
+.skills-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center}
+.skills-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;color:rgba(40,20,0,0.5);white-space:nowrap}
+.skill-pill{background:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.5);border-radius:100px;padding:0.25rem 0.8rem;font-size:11px;font-weight:600;color:#3a2000}
 
-/* WRAP */
 .wrap{max-width:980px;margin:0 auto;padding:4rem 2rem}
-h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;font-family:var(--font);
-  letter-spacing:-0.02em;margin-bottom:0.5rem}
+h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;font-family:var(--font);letter-spacing:-0.02em;margin-bottom:0.5rem}
 h2 em{font-style:normal;color:var(--orange)}
 .sub{font-size:13px;color:var(--muted);margin-bottom:2rem;line-height:1.6;max-width:520px}
 
-/* ONGOING CARDS */
+/* ONGOING */
 .ongoing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3.5rem}
-
 .ongoing-card{border-radius:14px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem}
 .ongoing-card.sponsorship{background:var(--yellow)}
 .ongoing-card.creators{background:var(--navy)}
 .ongoing-card.ai{background:var(--bg2);border:1px solid var(--border)}
-
 .card-num{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;font-weight:700}
 .ongoing-card.sponsorship .card-num{color:rgba(40,20,0,0.45)}
-.ongoing-card.creators .card-num{color:rgba(255,255,255,0.4)}
+.ongoing-card.creators .card-num,.ongoing-card.creators .card-title{color:#fff}
+.ongoing-card.creators .card-desc{color:rgba(255,255,255,0.65)}
 .ongoing-card.ai .card-num{color:var(--muted)}
-
 .card-icon{font-size:1.75rem}
 .card-title{font-size:1rem;font-weight:700;font-family:var(--font);line-height:1.2}
-.ongoing-card.sponsorship .card-title{color:#1a1000}
-.ongoing-card.creators .card-title{color:#fff}
+.ongoing-card.sponsorship .card-title{color:var(--text)}
 .ongoing-card.ai .card-title{color:var(--text)}
-
 .card-desc{font-size:12px;line-height:1.7;flex:1}
-.ongoing-card.sponsorship .card-desc{color:rgba(40,20,0,0.65)}
-.ongoing-card.creators .card-desc{color:rgba(255,255,255,0.65)}
+.ongoing-card.sponsorship .card-desc{color:var(--muted)}
 .ongoing-card.ai .card-desc{color:var(--muted)}
-
 .card-tags{display:flex;flex-wrap:wrap;gap:4px}
 .tag{font-size:10px;border-radius:4px;padding:2px 7px;font-weight:500}
-.ongoing-card.sponsorship .tag{background:rgba(255,255,255,0.4);color:#3a2000}
+.ongoing-card.sponsorship .tag{background:rgba(255,255,255,0.4);color:var(--text)}
 .ongoing-card.creators .tag{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7)}
-.ongoing-card.ai .tag{background:#fff;border:1px solid var(--border);color:var(--muted)}
-
+.ongoing-card.ai .tag{background:var(--bg);border:1px solid var(--border);color:var(--muted)}
 .card-actions{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:auto}
-.btn-orange{background:var(--orange);color:#fff;border:none;
-  padding:0.55rem 1.1rem;border-radius:7px;font-size:12px;font-weight:700;
-  cursor:pointer;transition:opacity 0.2s;text-decoration:none;display:inline-block}
+
+.btn-orange{background:var(--orange);color:#fff;border:none;padding:0.55rem 1.1rem;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:opacity 0.2s;text-decoration:none;display:inline-block}
 .btn-orange:hover{opacity:0.85}
-.btn-wa{background:#25d366;color:#fff;border:none;
-  padding:0.55rem 1rem;border-radius:7px;font-size:12px;font-weight:700;
-  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.btn-wa{background:#25d366;color:#fff;border:none;padding:0.55rem 1rem;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
 .btn-wa:hover{opacity:0.85}
-.btn-email{background:#EA4335;color:#fff;border:none;
-  padding:0.55rem 1rem;border-radius:7px;font-size:12px;font-weight:700;
-  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.btn-email{background:#EA4335;color:#fff;border:none;padding:0.55rem 1rem;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
 .btn-email:hover{opacity:0.85}
-.btn-white{background:#fff;color:var(--orange);border:none;
-  padding:0.55rem 1.1rem;border-radius:7px;font-size:12px;font-weight:700;
-  cursor:pointer;text-decoration:none;display:inline-block}
+.btn-white{background:var(--bg);color:var(--orange);border:none;padding:0.55rem 1.1rem;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
 .btn-white:hover{opacity:0.85}
 
-/* CREATORS STEPS */
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.5rem}
-.step{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);
-  border-radius:8px;padding:0.75rem}
+.step{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.75rem}
 .step-num{font-size:1rem;font-weight:700;color:var(--orange);font-family:var(--font);line-height:1}
 .step h4{font-size:12px;font-weight:700;color:#fff;margin:2px 0}
 .step p{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.4}
 
-/* PHOTO STRIP */
-.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;
-  margin-bottom:3.5rem;border-radius:12px;overflow:hidden}
+.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:3.5rem;border-radius:12px;overflow:hidden}
 .photo-strip img{width:100%;height:200px;object-fit:cover;display:block}
 
-/* DIVIDER */
 .divider{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
 .divider-line{flex:1;height:1px;background:var(--border)}
-.divider-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
-  font-weight:700;color:var(--muted);white-space:nowrap}
+.divider-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--muted);white-space:nowrap}
 
 /* OTHER PROGRAMS */
 .other-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:3rem}
-.other-card{background:#fff;border:1px solid var(--border);border-radius:12px;
-  padding:1.5rem;transition:all 0.2s}
+.other-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all 0.2s}
 .other-card:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(232,100,0,0.08);transform:translateY(-2px)}
 .other-icon{font-size:1.3rem;margin-bottom:0.6rem}
-.other-level{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:700;color:var(--orange);background:var(--orange-light);
-  border:1px solid #f0c090;border-radius:4px;padding:2px 7px;
-  display:inline-block;margin-bottom:0.6rem}
+.other-level{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;color:var(--orange);background:var(--orange-light);border:1px solid var(--border);border-radius:4px;padding:2px 7px;display:inline-block;margin-bottom:0.6rem}
 .other-card h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:0.4rem}
 .other-card p{font-size:12px;color:var(--muted);line-height:1.6}
 .other-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.75rem}
-.other-tag{font-size:10px;background:var(--bg2);border:1px solid var(--border);
-  border-radius:4px;padding:2px 7px;color:var(--muted)}
+.other-tag{font-size:10px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--muted)}
 
 /* CTA */
 .cta{background:var(--orange);border-radius:14px;padding:2.5rem;text-align:center}
@@ -133,9 +91,10 @@ h2 em{font-style:normal;color:var(--orange)}
 .cta h3 strong{font-weight:700}
 .cta p{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:1.5rem}
 .cta-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.btn-cta-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);padding:0.6rem 1.5rem;border-radius:7px;font-size:13px;font-weight:700;text-decoration:none;display:inline-block}
+.btn-cta-outline:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
 
-/* FOOTER */
-footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
 .footer-copy{font-size:11px;color:var(--muted)}
 
 @media(max-width:768px){
@@ -173,14 +132,12 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
 
 <div class="wrap">
 
-  <!-- ONGOING -->
   <div class="section-tag">Flagship · Ongoing</div>
   <h2>Our <em>ongoing</em> programs</h2>
   <p class="sub">These three programs are actively running — open for students, schools, and supporters to join right now.</p>
 
   <div class="ongoing-grid">
 
-    <!-- SPONSORSHIP -->
     <div class="ongoing-card sponsorship">
       <div class="card-num">1 · Ongoing</div>
       <div class="card-icon">🎓</div>
@@ -203,7 +160,6 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
       </div>
     </div>
 
-    <!-- CREATORS -->
     <div class="ongoing-card creators">
       <div class="card-num">2 · Flagship</div>
       <div class="card-icon">🎨</div>
@@ -225,7 +181,6 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
       </div>
     </div>
 
-    <!-- AI SKILLS -->
     <div class="ongoing-card ai">
       <div class="card-num">3 · Ongoing</div>
       <div class="card-icon">🤖</div>
@@ -243,14 +198,12 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
 
   </div>
 
-  <!-- CREATORS PHOTOS -->
   <div class="photo-strip">
     <img src="images/image3.jpeg" alt="Creators Program"/>
     <img src="images/image4.jpeg" alt="Creators Program"/>
     <img src="images/image5.jpeg" alt="Creators Program"/>
   </div>
 
-  <!-- OTHER PROGRAMS -->
   <div class="divider">
     <div class="divider-line"></div>
     <div class="divider-label">Other programs we deliver</div>
@@ -262,7 +215,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
       <div class="other-icon">🔔</div>
       <div class="other-level">All schools</div>
       <h3>Interaction & Awareness</h3>
-      <p>Proactive engagement with schools and communities — building awareness about the importance of skill-based education in rural AP.</p>
+      <p>Proactive engagement with schools and communities — building awareness about skill-based education in rural AP.</p>
       <div class="other-tags"><span class="other-tag">Outreach</span><span class="other-tag">Awareness</span></div>
     </div>
     <div class="other-card">
@@ -276,7 +229,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
       <div class="other-icon">👩‍🏫</div>
       <div class="other-level">Educators</div>
       <h3>Teacher Training</h3>
-      <p>Training rural teachers on student-focused methodologies — strengthening educators to deliver quality education and inspire students.</p>
+      <p>Training rural teachers on student-focused methodologies — strengthening educators to deliver quality education.</p>
       <div class="other-tags"><span class="other-tag">Pedagogy</span><span class="other-tag">Mentorship</span></div>
     </div>
     <div class="other-card">
@@ -290,7 +243,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
       <div class="other-icon">🌟</div>
       <div class="other-level">All levels</div>
       <h3>Personal Development Skills</h3>
-      <p>Communication, leadership, goal-setting, and confidence workshops. The skills employers want — taught in rural Andhra Pradesh.</p>
+      <p>Communication, leadership, goal-setting, and confidence workshops — the skills employers want, taught in rural Andhra Pradesh.</p>
       <div class="other-tags"><span class="other-tag">Leadership</span><span class="other-tag">Communication</span></div>
     </div>
     <div class="other-card">
@@ -302,22 +255,17 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.5rem 2rem;te
     </div>
   </div>
 
-  <!-- SKILL DEV PHOTOS -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;border-radius:12px;overflow:hidden;margin-bottom:3rem">
     <img src="images/image1.jpeg" alt="Skill development program" style="width:100%;height:220px;object-fit:cover;display:block"/>
     <img src="images/image2.jpeg" alt="Skill development program" style="width:100%;height:220px;object-fit:cover;display:block"/>
   </div>
 
-  <!-- CTA -->
   <div class="cta">
     <h3>Want to bring these programs <strong>to your school?</strong></h3>
     <p>We partner with schools and colleges across rural Andhra Pradesh. Reach out and let's start a conversation.</p>
     <div class="cta-btns">
       <a href="/index.html#contact" class="btn-white">Contact us</a>
-      <a href="register.html" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);
-        padding:0.6rem 1.5rem;border-radius:7px;font-size:13px;font-weight:700;text-decoration:none">
-        Student registration
-      </a>
+      <a href="register.html" class="btn-cta-outline">Student registration</a>
     </div>
   </div>
 
