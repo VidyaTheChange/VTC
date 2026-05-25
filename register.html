@@ -261,7 +261,7 @@ const submitForm=async()=>{
     created_at:new Date().toISOString()
   };
 
-  const required=['fullname','fathername','mothername','gender','phone','address','school','classyear','program','reason','source'];
+  const required=['fullname','fathername','mothername','gender','phone','email','address','school','classyear','program','reason','source'];
   const missing=required.filter(f=>!data[f]);
   if(missing.length){
     err.textContent='Please fill in all required fields marked with *.';
