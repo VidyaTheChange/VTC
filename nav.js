@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 }
 
 .nav-logo img{
-  height:36px;
+  height:60px;
   width:auto;
   display:block;
 }
