@@ -1,5 +1,29 @@
-// Vidya The Change — Shared Navigation
-// Edit this file once to update nav across all pages
+// Vidya The Change — Shared Navigation + Global Theme
+// Edit colours here once — updates all pages automatically
+
+const VTC_THEME = `
+<style>
+:root{
+  --bg:#ffffff;
+  --bg2:#f5faf8;
+  --bg3:#e8f5f0;
+  --card:#ffffff;
+  --border:#d0e8e0;
+  --text:#0a1a16;
+  --muted:#4a7a6a;
+  --orange:#e86400;
+  --orange-light:#fff3e8;
+  --yellow:#f5a800;
+  --yellow-light:#fffbe6;
+  --navy:#0f6e56;
+  --navy-light:#e1f5ee;
+  --green:#0f6e56;
+  --font:'Georgia',serif;
+  --sans:'Inter',sans-serif
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans)}
+</style>
+`;
 
 const VTC_NAV = `
 <style>
@@ -74,6 +98,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 
 // Inject nav into page
 document.addEventListener('DOMContentLoaded', () => {
+  // Inject global theme first
+  document.head.insertAdjacentHTML('beforeend', VTC_THEME);
+
   // Insert nav at top of body
   document.body.insertAdjacentHTML('afterbegin', VTC_NAV);
 
