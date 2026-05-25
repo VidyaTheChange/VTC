@@ -24,7 +24,7 @@ h1 strong{font-weight:700;color:var(--orange)}
   text-transform:uppercase;color:var(--orange);margin-bottom:1.25rem;
   padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
 
-.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.field-pair{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;align-items:start}
 .field-full{grid-column:1/-1}
 .field{display:flex;flex-direction:column;gap:0.3rem}
 label{font-size:11px;font-weight:600;color:var(--text);letter-spacing:0.03em}
@@ -77,34 +77,40 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
         <label>Full Name <span class="req">*</span></label>
         <input type="text" id="fullname" placeholder="Enter student's full name"/>
       </div>
-      <div class="field">
-        <label>Father's Name <span class="req">*</span></label>
-        <input type="text" id="fathername" placeholder="Enter Father's full name"/>
+      <div class="field-pair">
+        <div class="field">
+          <label>Father's Name <span class="req">*</span></label>
+          <input type="text" id="fathername" placeholder="Enter Father's full name"/>
+        </div>
+        <div class="field">
+          <label>Mother's Name <span class="req">*</span></label>
+          <input type="text" id="mothername" placeholder="Enter Mother's full name"/>
+        </div>
       </div>
-      <div class="field">
-        <label>Mother's Name <span class="req">*</span></label>
-        <input type="text" id="mothername" placeholder="Enter Mother's full name"/>
+      <div class="field-pair">
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" id="dob"/>
+        </div>
+        <div class="field">
+          <label>Gender <span class="req">*</span></label>
+          <select id="gender">
+            <option value="">Select</option>
+            <option>Male</option><option>Female</option><option>Other</option>
+          </select>
+        </div>
       </div>
-      <div class="field">
-        <label>Date of Birth</label>
-        <input type="date" id="dob"/>
-      </div>
-      <div class="field">
-        <label>Gender <span class="req">*</span></label>
-        <select id="gender">
-          <option value="">Select</option>
-          <option>Male</option><option>Female</option><option>Other</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>WhatsApp Number <span class="req">*</span></label>
-        <input type="tel" id="phone" placeholder="10-digit number" maxlength="10"/>
-        <span class="inline-err" id="phoneErr"></span>
-      </div>
-      <div class="field">
-        <label>Email ID <span class="req">*</span></label>
-        <input type="email" id="email" placeholder="Enter your Email ID"/>
-        <span class="inline-err" id="emailErr"></span>
+      <div class="field-pair">
+        <div class="field">
+          <label>WhatsApp Number <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="10-digit number" maxlength="10"/>
+          <span class="inline-err" id="phoneErr"></span>
+        </div>
+        <div class="field">
+          <label>Email ID <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="Enter your Email ID"/>
+          <span class="inline-err" id="emailErr"></span>
+        </div>
       </div>
       <div class="field field-full">
         <label>Address <span class="req">*</span></label>
