@@ -241,26 +241,45 @@ const submitForm=async()=>{
   const success=document.getElementById('successBox');
   err.style.display='none';
 
-  const data={
-    fullname:document.getElementById('fullname').value.trim(),
-    fathername:document.getElementById('fathername').value.trim(),
-    mothername:document.getElementById('mothername').value.trim(),
-    dob:document.getElementById('dob').value,
-    gender:document.getElementById('gender').value,
-    phone:document.getElementById('phone').value.trim(),
-    email:document.getElementById('email').value.trim(),
-    address:document.getElementById('address').value.trim(),
-    school:document.getElementById('school').value.trim(),
-    classyear:document.getElementById('classyear').value,
-    medium:document.getElementById('medium').value,
-    smartphone:document.getElementById('smartphone').value,
-    laptop:document.getElementById('laptop').value,
-    program:document.getElementById('program').value,
-    reason:document.getElementById('reason').value.trim(),
-    source:document.getElementById('source').value,
-    created_at:new Date().toISOString()
-  };
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
+  // 1. reset errors FIRST
+  err.style.display = 'none';
+  err.textContent = '';
+
+  // 2. get values
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  // 3. validation
+  if(!/^[0-9]{10}$/.test(phone)){
+    err.textContent = 'Please enter a valid 10-digit phone number.';
+    err.style.display = 'block';
+    return;
+  }
+
+  // 4. then build data
+  const data = {
+    phone,
+    email,
+    fullname: document.getElementById('fullname').value.trim(),
+    fathername: document.getElementById('fathername').value.trim(),
+    mothername: document.getElementById('mothername').value.trim(),
+    dob: document.getElementById('dob').value,
+    gender: document.getElementById('gender').value,
+    address: document.getElementById('address').value.trim(),
+    school: document.getElementById('school').value.trim(),
+    classyear: document.getElementById('classyear').value,
+    medium: document.getElementById('medium').value,
+    smartphone: document.getElementById('smartphone').value,
+    laptop: document.getElementById('laptop').value,
+    program: document.getElementById('program').value,
+    reason: document.getElementById('reason').value.trim(),
+    source: document.getElementById('source').value,
+    created_at: new Date().toISOString()
+  };
+});
   const required=['fullname','fathername','mothername','gender','phone','email','address','school','classyear','program','reason','source'];
   const missing=required.filter(f=>!data[f]);
   if(missing.length){
@@ -291,17 +310,6 @@ const submitForm=async()=>{
 
   // continue submit (fetch to Supabase)
 });
-  if(!/^[0-9]{10}$/.test(phone)){
-  err.textContent = 'Please enter a valid 10-digit phone number.';
-  err.style.display = 'block';
-  return;
-}
-
-if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-  err.textContent = 'Please enter a valid email address.';
-  err.style.display = 'block';
-  return;
-}
 
   btn.textContent='Submitting…';btn.disabled=true;
   try{
