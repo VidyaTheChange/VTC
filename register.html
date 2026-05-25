@@ -6,11 +6,14 @@
 <title>Student Registration — Vidya The Change</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
+:root{
+  --bg:#fff;--bg2:#f7f7f5;--text:#1a1a1a;--muted:#6b7280;
+  --border:#e5e7eb;--orange:#e8620a;--green:#16a34a;
+  --sans:system-ui,sans-serif;--font:Georgia,serif
+}
 body{background:var(--bg2);color:var(--text);font-family:var(--sans);line-height:1.6}
 
-/* HERO */
-.reg-hero{padding:7rem 2rem 3rem;text-align:center;background:var(--bg)}
+.reg-hero{padding:4rem 2rem 2.5rem;text-align:center;background:var(--bg)}
 .section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);
   text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
 h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-family:var(--font);
@@ -18,7 +21,6 @@ h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-family:var(--font);
 h1 strong{font-weight:700;color:var(--orange)}
 .hero-sub{font-size:0.95rem;color:var(--muted);max-width:460px;margin:0 auto}
 
-/* FORM WRAP */
 .form-wrap{max-width:680px;margin:2.5rem auto;padding:0 2rem 4rem}
 
 .form-card{background:#fff;border:1px solid var(--border);border-radius:16px;
@@ -39,11 +41,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--orange)}
 select option{background:#fff}
 textarea{resize:vertical;min-height:80px}
 
-.radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.2rem}
-.radio-opt{display:flex;align-items:center;gap:6px;cursor:pointer}
-.radio-opt input[type=radio]{width:auto;accent-color:var(--orange)}
-.radio-opt span{font-size:12px;color:var(--text)}
-
 .submit-btn{width:100%;background:var(--orange);color:#fff;border:none;
   padding:0.9rem;border-radius:8px;font-size:14px;font-weight:700;
   cursor:pointer;transition:all 0.2s;font-family:var(--sans);margin-top:0.5rem}
@@ -62,19 +59,14 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
 .footer-copy{font-size:11px;color:var(--muted)}
 
 @media(max-width:640px){
-  nav{padding:0.45rem 0.9rem;gap:0.75rem}
-  .nav-links{display:none}
   .field-grid{grid-template-columns:1fr}
 }
 </style>
-<script src="nav.js"></script>
 </head>
 <body>
 
-
-
 <div class="reg-hero">
-  <div class="section-tag">Vidya The Change Programs - Applications Open for 2026!</div>
+  <div class="section-tag">Vidya The Change Programs — Applications Open for 2026!</div>
   <h1>Student <strong>Registration</strong></h1>
   <p class="hero-sub">Take the first step towards building your future-ready skills. Fill in the form below and our team will reach out to you shortly.</p>
 </div>
@@ -98,7 +90,7 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
         <input type="text" id="mothername" placeholder="Enter Mother's full name"/>
       </div>
       <div class="field">
-        <label>Date of birth</label>
+        <label>Date of Birth</label>
         <input type="date" id="dob"/>
       </div>
       <div class="field">
@@ -111,12 +103,12 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
         </select>
       </div>
       <div class="field">
-        <label>WhatsApp number <span class="req">*</span></label>
-        <input type="tel" id="phone" placeholder="Enter your Phone Number" pattern="[0-9]{10}" maxlength="10" required/>
+        <label>WhatsApp Number <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="10-digit number" maxlength="10"/>
       </div>
       <div class="field">
-        <label>Email Id <span class="req">*</span></label>
-        <input type="email" id="email" placeholder="Enter your Email Id" required/>
+        <label>Email ID <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="Enter your Email ID"/>
       </div>
       <div class="field field-full">
         <label>Address <span class="req">*</span></label>
@@ -130,21 +122,16 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
     <div class="form-card-title">Academic Details</div>
     <div class="field-grid">
       <div class="field field-full">
-        <label>School / College name <span class="req">*</span></label>
+        <label>School / College Name <span class="req">*</span></label>
         <input type="text" id="school" placeholder="Name of your school or college"/>
       </div>
       <div class="field">
-        <label>Class / Year of study <span class="req">*</span></label>
+        <label>Class / Year of Study <span class="req">*</span></label>
         <select id="classyear">
           <option value="">Select</option>
-          <option>Class 3</option>
-          <option>Class 4</option>
-          <option>Class 5</option>
-          <option>Class 6</option>
-          <option>Class 7</option>
-          <option>Class 8</option>
-          <option>Class 9</option>
-          <option>Class 10</option>
+          <option>Class 3</option><option>Class 4</option><option>Class 5</option>
+          <option>Class 6</option><option>Class 7</option><option>Class 8</option>
+          <option>Class 9</option><option>Class 10</option>
           <option>Intermediate / Class 11–12</option>
           <option>1st Year Degree</option>
           <option>2nd Year Degree</option>
@@ -153,21 +140,18 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
         </select>
       </div>
       <div class="field">
-        <label>Medium of instruction</label>
+        <label>Medium of Instruction</label>
         <select id="medium">
           <option value="">Select</option>
-          <option>Telugu</option>
-          <option>English</option>
-          <option>Hindi</option>
-          <option>Other</option>
+          <option>Telugu</option><option>English</option>
+          <option>Hindi</option><option>Other</option>
         </select>
       </div>
       <div class="field">
         <label>Do you have a smartphone?</label>
         <select id="smartphone">
           <option value="">Select</option>
-          <option>Yes</option>
-          <option>No</option>
+          <option>Yes</option><option>No</option>
           <option>Shared with family</option>
         </select>
       </div>
@@ -175,8 +159,7 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
         <label>Do you have a laptop / computer?</label>
         <select id="laptop">
           <option value="">Select</option>
-          <option>Yes</option>
-          <option>No</option>
+          <option>Yes</option><option>No</option>
           <option>Shared / School access</option>
         </select>
       </div>
@@ -198,20 +181,16 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
         </select>
       </div>
       <div class="field field-full">
-        <label>Tell us about yourself — what are you looking for and what made you register with us? <span class="req">*</span></label>
+        <label>Tell us about yourself <span class="req">*</span></label>
         <textarea id="reason" placeholder="Tell us what you are hoping to get from Vidya The Change and what brought you here…"></textarea>
       </div>
-
       <div class="field field-full">
         <label>How did you hear about us? <span class="req">*</span></label>
         <select id="source">
           <option value="">Select</option>
-          <option>Instagram</option>
-          <option>Facebook</option>
-          <option>LinkedIn</option>
-          <option>Friend or family</option>
-          <option>School / Teacher</option>
-          <option>WhatsApp</option>
+          <option>Instagram</option><option>Facebook</option>
+          <option>LinkedIn</option><option>Friend or family</option>
+          <option>School / Teacher</option><option>WhatsApp</option>
           <option>Other</option>
         </select>
       </div>
@@ -219,7 +198,7 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
   </div>
 
   <button class="submit-btn" id="submitBtn" onclick="submitForm()">Submit Registration →</button>
-  <div class="err-msg" id="errMsg">Please fill in all required fields.</div>
+  <div class="err-msg" id="errMsg"></div>
 
   <div class="success-box" id="successBox">
     <h3>Registration received! 🎉</h3>
@@ -232,33 +211,31 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
 </footer>
 
 <script>
-const SUPA_URL='https://ninrmohzytxcygpolqsh.supabase.co';
-const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
+const SUPA_URL = 'https://ninrmohzytxcygpolqsh.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
 
-const form = document.getElementById('form');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
+async function submitForm() {
   const btn = document.getElementById('submitBtn');
   const err = document.getElementById('errMsg');
   const success = document.getElementById('successBox');
 
-  // reset UI
+  // Reset UI
   err.style.display = 'none';
   err.textContent = '';
+  success.style.display = 'none';
 
-  // get values
+  // Collect values
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
 
-  // validation
+  // Validate phone
   if (!/^[0-9]{10}$/.test(phone)) {
     err.textContent = 'Please enter a valid 10-digit phone number.';
     err.style.display = 'block';
     return;
   }
 
+  // Validate email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     err.textContent = 'Please enter a valid email address.';
     err.style.display = 'block';
@@ -266,35 +243,35 @@ form.addEventListener('submit', async (e) => {
   }
 
   const data = {
-    phone,
-    email,
-    fullname: document.getElementById('fullname').value.trim(),
+    fullname:   document.getElementById('fullname').value.trim(),
     fathername: document.getElementById('fathername').value.trim(),
     mothername: document.getElementById('mothername').value.trim(),
-    dob: document.getElementById('dob').value,
-    gender: document.getElementById('gender').value,
-    address: document.getElementById('address').value.trim(),
-    school: document.getElementById('school').value.trim(),
-    classyear: document.getElementById('classyear').value,
-    medium: document.getElementById('medium').value,
+    dob:        document.getElementById('dob').value,
+    gender:     document.getElementById('gender').value,
+    phone,
+    email,
+    address:    document.getElementById('address').value.trim(),
+    school:     document.getElementById('school').value.trim(),
+    classyear:  document.getElementById('classyear').value,
+    medium:     document.getElementById('medium').value,
     smartphone: document.getElementById('smartphone').value,
-    laptop: document.getElementById('laptop').value,
-    program: document.getElementById('program').value,
-    reason: document.getElementById('reason').value.trim(),
-    source: document.getElementById('source').value,
+    laptop:     document.getElementById('laptop').value,
+    program:    document.getElementById('program').value,
+    reason:     document.getElementById('reason').value.trim(),
+    source:     document.getElementById('source').value,
     created_at: new Date().toISOString()
   };
 
+  // Check required fields
   const required = ['fullname','fathername','mothername','gender','phone','email','address','school','classyear','program','reason','source'];
   const missing = required.filter(f => !data[f]);
-
   if (missing.length) {
     err.textContent = 'Please fill in all required fields marked with *.';
     err.style.display = 'block';
     return;
   }
 
-  // disable button AFTER validation passes
+  // Disable button while submitting
   btn.textContent = 'Submitting…';
   btn.disabled = true;
 
@@ -312,37 +289,25 @@ form.addEventListener('submit', async (e) => {
 
     if (r.ok || r.status === 201) {
       success.style.display = 'block';
-      form.reset();
+      btn.style.display = 'none';
+      // Clear all fields
+      ['fullname','fathername','mothername','dob','gender','phone','email',
+       'address','school','classyear','medium','smartphone','laptop',
+       'program','reason','source'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     } else {
-      throw new Error();
+      throw new Error('Server error: ' + r.status);
     }
-
   } catch (e) {
-    err.textContent = 'Something went wrong. Please try again.';
+    err.textContent = 'Something went wrong. Please try again or contact us on WhatsApp.';
     err.style.display = 'block';
+    btn.textContent = 'Submit Registration →';
+    btn.disabled = false;
   }
-
-  btn.textContent = 'Submit Registration →';
-  btn.disabled = false;
-});
-  try{
-    const r=await fetch(`${SUPA_URL}/rest/v1/students`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,
-        'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify(data)
-    });
-    if(r.ok||r.status===201){
-      btn.style.display='none';
-      success.style.display='block';
-      window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
-    } else throw new Error();
-  }catch(e){
-    err.textContent='Something went wrong. Please try again or contact us on WhatsApp.';
-    err.style.display='block';
-    btn.textContent='Submit Registration →';btn.disabled=false;
-  }
-};
+}
 </script>
 </body>
 </html>
