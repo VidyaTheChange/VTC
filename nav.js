@@ -39,7 +39,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
   box-shadow:0 1px 0 #dde3ee;
   padding:0.75rem 2.5rem;display:flex;align-items:center;
   justify-content:space-between;transition:padding 0.3s}
-.nav-logo{font-size:15px;font-weight:700;color:#e86400;font-family:Georgia,serif;text-decoration:none}
+.nav-logo{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+.nav-logo img{
+  height:36px;
+  width:auto;
+  display:block;
+}
 .nav-center{display:flex;gap:2rem}
 .nav-center a{font-size:13px;color:#0f1f3d;transition:color 0.2s;font-weight:500;text-decoration:none}
 .nav-center a:hover{color:#e86400}
@@ -76,8 +86,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 </style>
 
 <nav id="vtc-navbar">
-  <a class="nav-logo" href="/index.html">Vidya The Change</a>
-  <div class="nav-center">
+<a class="nav-logo" href="/">
+  <img src="/images/logo.jpeg" alt="Vidya The Change">
+</a>
+<div class="nav-center">
+    <a href="/" data-page="home">Home</a>
     <a href="/programs.html" data-page="programs">Programs</a>
     <a href="/index.html#impact" data-page="impact">Impact</a>
     <a href="/team.html" data-page="team">Our Team</a>
