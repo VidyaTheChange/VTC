@@ -4,26 +4,29 @@
 const VTC_THEME = `
 <style>
 :root{
-  --bg:#ffffff;
-  --bg2:#fffaf5;
-  --bg3:#fff3e8;
+ /* DARK BASE */
+  --bg:#0f0b08;
+  --bg2:#17110d;
+  --bg3:#1f160f;
 
-  --card:#ffffff;
-  --border:#f0dfcf;
+  --card:#17110d;
+  --border:rgba(255,255,255,0.08);
 
-  --text:#1f1a17;
-  --muted:#7b6858;
+  /* TEXT */
+  --text:#fff7ef;
+  --muted:#c9a48a;
 
+  /* PRIMARY COLORS */
   --orange:#e86400;
-  --orange-light:#fff1e4;
+  --orange-light:rgba(232,100,0,0.12);
 
   --yellow:#f5a800;
-  --yellow-light:#fff8df;
+  --yellow-light:rgba(245,168,0,0.12);
 
-  --navy:#2b2d42;
-  --navy-light:#eef0f6;
-
-  --green:#4d7c4d;
+  /* REMOVE TEAL/GREEN COMPLETELY */
+  --green:var(--yellow); /* optional fallback */
+  --navy:var(--bg3);
+  --navy-light:var(--bg2);
 
   --font:'Georgia',serif;
   --sans:'Inter',sans-serif;
