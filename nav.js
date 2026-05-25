@@ -5,21 +5,28 @@ const VTC_THEME = `
 <style>
 :root{
   --bg:#ffffff;
-  --bg2:#f5faf8;
-  --bg3:#e8f5f0;
+  --bg2:#fffaf5;
+  --bg3:#fff3e8;
+
   --card:#ffffff;
-  --border:#d0e8e0;
-  --text:#0a1a16;
-  --muted:#4a7a6a;
+  --border:#f0dfcf;
+
+  --text:#1f1a17;
+  --muted:#7b6858;
+
   --orange:#e86400;
-  --orange-light:#fff3e8;
+  --orange-light:#fff1e4;
+
   --yellow:#f5a800;
-  --yellow-light:#fffbe6;
-  --navy:#0f6e56;
-  --navy-light:#e1f5ee;
-  --green:#0f6e56;
+  --yellow-light:#fff8df;
+
+  --navy:#2b2d42;
+  --navy-light:#eef0f6;
+
+  --green:#4d7c4d;
+
   --font:'Georgia',serif;
-  --sans:'Inter',sans-serif
+  --sans:'Inter',sans-serif;
 }
 body{background:var(--bg);color:var(--text);font-family:var(--sans)}
 </style>
