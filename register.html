@@ -267,6 +267,30 @@ const submitForm=async()=>{
     err.textContent='Please fill in all required fields marked with *.';
     err.style.display='block';return;
   }
+  form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  err.style.display = 'none';
+  err.textContent = '';
+
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  // validation starts
+  if(!/^[0-9]{10}$/.test(phone)){
+    err.textContent = 'Please enter a valid 10-digit phone number.';
+    err.style.display = 'block';
+    return;
+  }
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    err.textContent = 'Please enter a valid email address.';
+    err.style.display = 'block';
+    return;
+  }
+
+  // continue submit (fetch to Supabase)
+});
   if(!/^[0-9]{10}$/.test(phone)){
   err.textContent = 'Please enter a valid 10-digit phone number.';
   err.style.display = 'block';
