@@ -292,6 +292,32 @@ async function submitForm() {
 }
 
 document.getElementById('submitBtn').addEventListener('click', submitForm);
+
+// Inline validation
+document.getElementById('phone').addEventListener('input', function() {
+  const err = document.getElementById('phoneErr');
+  const valid = /^[0-9]{10}$/.test(this.value.trim());
+  this.classList.toggle('invalid', this.value.length > 0 && !valid);
+  this.classList.toggle('valid', valid);
+  err.textContent = this.value.length > 0 && !valid ? 'Enter a valid 10-digit number.' : '';
+});
+
+document.getElementById('email').addEventListener('blur', function() {
+  const err = document.getElementById('emailErr');
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim());
+  this.classList.toggle('invalid', this.value.length > 0 && !valid);
+  this.classList.toggle('valid', this.value.length > 0 && valid);
+  err.textContent = this.value.length > 0 && !valid ? 'Enter a valid email address.' : '';
+});
+
+document.getElementById('email').addEventListener('input', function() {
+  if (document.getElementById('emailErr').textContent) {
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim());
+    this.classList.toggle('invalid', !valid);
+    this.classList.toggle('valid', valid);
+    document.getElementById('emailErr').textContent = valid ? '' : 'Enter a valid email address.';
+  }
+});
 </script>
 </body>
 </html>
