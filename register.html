@@ -197,7 +197,7 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
     </div>
   </div>
 
-  <button class="submit-btn" id="submitBtn" onclick="submitForm()">Submit Registration →</button>
+  <button class="submit-btn" id="submitBtn">Submit Registration →</button>
   <div class="err-msg" id="errMsg"></div>
 
   <div class="success-box" id="successBox">
@@ -211,6 +211,8 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
 </footer>
 
 <script>
+document.getElementById('submitBtn').addEventListener('click', submitForm);
+
 const SUPA_URL = 'https://ninrmohzytxcygpolqsh.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
 
@@ -219,7 +221,9 @@ async function submitForm() {
   const err = document.getElementById('errMsg');
   const success = document.getElementById('successBox');
 
+  // Immediate visual feedback — if you see this, the function IS running
   // Reset UI
+  err.style.color = '#c0392b';
   err.style.display = 'none';
   err.textContent = '';
   success.style.display = 'none';
@@ -290,7 +294,6 @@ async function submitForm() {
     if (r.ok || r.status === 201) {
       success.style.display = 'block';
       btn.style.display = 'none';
-      // Clear all fields
       ['fullname','fathername','mothername','dob','gender','phone','email',
        'address','school','classyear','medium','smartphone','laptop',
        'program','reason','source'].forEach(id => {
@@ -299,10 +302,11 @@ async function submitForm() {
       });
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     } else {
-      throw new Error('Server error: ' + r.status);
+      const body = await r.text();
+      throw new Error(`HTTP ${r.status}: ${body}`);
     }
   } catch (e) {
-    err.textContent = 'Something went wrong. Please try again or contact us on WhatsApp.';
+    err.textContent = 'Error: ' + e.message;
     err.style.display = 'block';
     btn.textContent = 'Submit Registration →';
     btn.disabled = false;
