@@ -18,10 +18,8 @@ const VTC_THEME = `
   --orange-light:#fff1e4;
 
   --yellow:#f5a800;
-  --yellow-light:#fff8df;
 
   --navy:#2b2d42;
-  --navy-light:#eef0f6;
 
   --green:#4d7c4d;
 
@@ -184,6 +182,7 @@ nav.scrolled .nav-logo img{height:56px;}
 
 <div class="mobile-menu" id="vtc-mobile-menu">
   <button class="mob-close" id="vtc-mob-close">✕</button>
+  <a href="/">Home</a>
   <a href="/programs/">Programs</a>
   <a href="/impact/">Impact</a>
   <a href="/team/">Our Team</a>
@@ -300,11 +299,11 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
 </a>
 `;
 
-// Inject nav into page
-document.addEventListener('DOMContentLoaded', () => {
-  // Inject global theme first
-  document.head.insertAdjacentHTML('beforeend', VTC_THEME);
+// Inject CSS theme immediately so variables are available before first paint
+document.head.insertAdjacentHTML('beforeend', VTC_THEME);
 
+// Inject nav + footer after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
   // Insert nav at top of body
   document.body.insertAdjacentHTML('afterbegin', VTC_NAV);
 
@@ -319,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Highlight active page
   const path = window.location.pathname;
   const hash = window.location.hash;
-  const onHome = path.endsWith('index.html') || path.endsWith('/');
+  const onHome = path === '/' || path.endsWith('/index.html');
 
   document.querySelectorAll('.nav-center a').forEach(a => {
     const page = a.getAttribute('data-page');
