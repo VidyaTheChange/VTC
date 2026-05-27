@@ -89,8 +89,7 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
     if (r.ok || r.status === 201) {
       localStorage.setItem(RATE_KEY, Date.now().toString());
       document.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
-      succ.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      succ.style.display = 'flex';
     } else {
       throw new Error();
     }

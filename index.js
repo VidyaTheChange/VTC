@@ -96,13 +96,7 @@ async function submitVolunteer() {
 
     if (r.ok || r.status === 201) {
       localStorage.setItem(VOL_RATE_KEY, Date.now().toString());
-      msg.style.display = 'block';
-      ['vol-name','vol-email','vol-phone','vol-math'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('vol-role').value = '';
-      document.getElementById('vol-message').value = '';
-      btn.textContent = 'Submit →';
-      btn.disabled = false;
-      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+      document.getElementById('volSuccessOverlay').style.display = 'flex';
     } else {
       throw new Error();
     }
@@ -115,3 +109,29 @@ async function submitVolunteer() {
 }
 
 document.getElementById('vol-submit').addEventListener('click', submitVolunteer);
+
+// Email inline validation
+document.getElementById('vol-email').addEventListener('blur', function() {
+  const errEl = document.getElementById('vol-emailErr');
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim());
+  this.classList.toggle('invalid', this.value.length > 0 && !valid);
+  this.classList.toggle('valid', this.value.length > 0 && valid);
+  errEl.textContent = this.value.length > 0 && !valid ? 'Enter a valid email address.' : '';
+});
+document.getElementById('vol-email').addEventListener('input', function() {
+  if (document.getElementById('vol-emailErr').textContent) {
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim());
+    this.classList.toggle('invalid', !valid);
+    this.classList.toggle('valid', valid);
+    document.getElementById('vol-emailErr').textContent = valid ? '' : 'Enter a valid email address.';
+  }
+});
+
+// Phone inline validation
+document.getElementById('vol-phone').addEventListener('input', function() {
+  const errEl = document.getElementById('vol-phoneErr');
+  const valid = /^[0-9]{10}$/.test(this.value.trim());
+  this.classList.toggle('invalid', this.value.length > 0 && !valid);
+  this.classList.toggle('valid', valid);
+  errEl.textContent = this.value.length > 0 && !valid ? 'Enter a valid 10-digit number.' : '';
+});

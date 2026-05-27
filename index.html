@@ -320,6 +320,22 @@ section{padding:5rem 2.5rem}
 }
 .vol-form input:focus,.vol-form select:focus,.vol-form textarea:focus{border-color:var(--orange)}
 .vol-form select option{background:#fff}
+.vol-form input.invalid{border-color:#c0392b !important;}
+.vol-form input.valid{border-color:#4d7c4d !important;}
+.vol-inline-err{font-size:11px;color:#c0392b;min-height:14px;}
+.vol-success-overlay{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.55);z-index:9999;
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.vol-success-box{
+  background:#f0faf3;border:1px solid #a8d4b0;
+  border-radius:16px;padding:2.5rem 2rem;text-align:center;
+  max-width:420px;width:100%;
+}
+.vol-success-box h3{font-size:1.3rem;font-weight:700;color:var(--green);
+  font-family:var(--font);margin-bottom:0.75rem}
+.vol-success-box p{font-size:13px;color:var(--muted);line-height:1.7}
 @media(max-width:640px){.involve-grid{grid-template-columns:1fr}}
 
 /* ── REGISTRATION CTA BANNER ── */
@@ -654,7 +670,9 @@ section{padding:5rem 2.5rem}
         <div class="vol-form">
           <input type="text" id="vol-name" placeholder="Your name"/>
           <input type="email" id="vol-email" placeholder="Email address"/>
+          <span class="vol-inline-err" id="vol-emailErr"></span>
           <input type="tel" id="vol-phone" placeholder="WhatsApp number (optional)" maxlength="10"/>
+          <span class="vol-inline-err" id="vol-phoneErr"></span>
           <select id="vol-role">
             <option value="">I want to…</option>
             <option>Volunteer as a facilitator</option>
@@ -708,6 +726,13 @@ section{padding:5rem 2.5rem}
     <p style="font-size:11px;color:var(--muted)">+91 93981 77507 · admin@vidyathechange.org · Typically replies within a few hours</p>
   </div>
 </section>
+
+<div class="vol-success-overlay" id="volSuccessOverlay">
+  <div class="vol-success-box">
+    <h3>Thank you! 🙏</h3>
+    <p>Thanks for your interest to be a part of Vidya The Change. We will reach out as soon as possible.</p>
+  </div>
+</div>
 
 <script src="/index.js"></script>
 </body>

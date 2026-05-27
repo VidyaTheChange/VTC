@@ -49,11 +49,19 @@ textarea{resize:vertical;min-height:80px}
 .submit-btn:hover{background:#c85600;transform:translateY(-1px)}
 .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
 
-.success-box{display:none;background:#f0faf3;border:1px solid #a8d4b0;
-  border-radius:12px;padding:2rem;text-align:center;margin-top:1rem}
-.success-box h3{font-size:1.2rem;font-weight:700;color:var(--green);
-  font-family:var(--font);margin-bottom:0.5rem}
-.success-box p{font-size:13px;color:var(--muted)}
+.success-overlay{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.55);z-index:9999;
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.success-box{
+  background:#f0faf3;border:1px solid #a8d4b0;
+  border-radius:16px;padding:2.5rem 2rem;text-align:center;
+  max-width:420px;width:100%;
+}
+.success-box h3{font-size:1.3rem;font-weight:700;color:var(--green);
+  font-family:var(--font);margin-bottom:0.75rem}
+.success-box p{font-size:13px;color:var(--muted);line-height:1.7}
 .err-msg{font-size:13px;color:#c0392b;background:#fdf0f0;border:1px solid #f5c6c6;border-radius:8px;padding:0.65rem 0.9rem;margin-top:0.5rem;display:none;}
 .inline-err{font-size:11px;color:#c0392b;min-height:14px;}
 input.invalid{border-color:#c0392b !important;}
@@ -95,7 +103,7 @@ input.valid{border-color:#4d7c4d !important;}
       <div class="field-pair">
         <div class="field">
           <label>Date of Birth</label>
-          <input type="date" id="dob"/>
+          <input type="text" id="dob" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off"/>
         </div>
         <div class="field">
           <label>Gender <span class="req">*</span></label>
@@ -229,9 +237,11 @@ input.valid{border-color:#4d7c4d !important;}
     </div>
   </div>
 
-  <div class="success-box" id="successBox">
-    <h3>Registration received! 🎉</h3>
-    <p>Thank you for registering with Vidya The Change. Our team will reach out to you on WhatsApp shortly. We are excited to have you on this journey!</p>
+  <div class="success-overlay" id="successBox">
+    <div class="success-box">
+      <h3>Registration received! 🎉</h3>
+      <p>Thank you for registering with Vidya The Change. Our team will reach out to you on WhatsApp shortly. We are excited to have you on this journey!</p>
+    </div>
   </div>
 </div>
 

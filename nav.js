@@ -157,6 +157,27 @@ nav.scrolled .nav-logo img{height:56px;}
   .hamburger{display:flex;}
   .nav-register{display:none;}
 }
+
+/* ── Breadcrumb ── */
+.vtc-breadcrumb{
+  position:fixed;top:95px;left:0;right:0;z-index:97;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:0.45rem 2.5rem;
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:var(--muted);font-family:var(--sans);
+  transition:top 0.3s;
+}
+.vtc-breadcrumb a{
+  color:var(--orange);font-weight:600;text-decoration:none;
+  display:flex;align-items:center;gap:4px;transition:opacity 0.2s;
+}
+.vtc-breadcrumb a:hover{opacity:0.7}
+.vtc-bc-sep{color:#ccc;font-size:11px;margin:0 2px}
+.vtc-bc-current{color:var(--text);font-weight:500}
+@media(max-width:820px){
+  .vtc-breadcrumb{top:80px;padding:0.4rem 1.25rem;font-size:11px}
+}
 </style>
 
 <div class="nav-accent"></div>
@@ -333,6 +354,30 @@ document.addEventListener('DOMContentLoaded', () => {
       a.classList.add('active');
     }
   });
+
+  // Breadcrumb — inject on all non-home pages
+  if (!onHome) {
+    const pageNames = {
+      '/programs/'  : 'Programs',
+      '/impact/'    : 'Our Impact',
+      '/team/'      : 'Our Team',
+      '/register/'  : 'Student Registration',
+      '/feedback/'  : 'Share Feedback',
+      '/privacy/'   : 'Privacy Policy'
+    };
+    const pageTitle = pageNames[path] || document.title.split('—')[0].trim() || 'Page';
+    document.body.insertAdjacentHTML('afterbegin',
+      '<div class="vtc-breadcrumb" id="vtc-breadcrumb">' +
+      '<a href="/">&#8592; Home</a>' +
+      '<span class="vtc-bc-sep">&#8250;</span>' +
+      '<span class="vtc-bc-current">' + pageTitle + '</span>' +
+      '</div>'
+    );
+    // Extra body padding so page content clears the breadcrumb bar
+    const s = document.createElement('style');
+    s.textContent = 'body{padding-top:36px}';
+    document.head.appendChild(s);
+  }
 });
 
 // Mobile menu toggle
@@ -343,10 +388,14 @@ function vtcToggleMenu() {
   if (m) m.classList.toggle('open');
 }
 
-// Scroll-shrink effect
+// Scroll-shrink effect + breadcrumb position tracking
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('vtc-navbar');
-  if (nav) {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+  const bc  = document.getElementById('vtc-breadcrumb');
+  const scrolled = window.scrollY > 50;
+  if (nav) nav.classList.toggle('scrolled', scrolled);
+  if (bc) {
+    const small = window.innerWidth <= 820;
+    bc.style.top = scrolled ? (small ? '68px' : '72px') : '';
   }
 });

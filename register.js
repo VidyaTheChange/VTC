@@ -97,8 +97,7 @@ async function submitForm() {
     if (r.ok || r.status === 201) {
       localStorage.setItem(RATE_KEY, Date.now().toString());
       document.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
-      success.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      success.style.display = 'flex';
     } else {
       throw new Error();
     }
@@ -117,6 +116,16 @@ document.getElementById('mathQ').textContent = _a + ' + ' + _b;
 const _ans = _a + _b;
 
 document.getElementById('submitBtn').addEventListener('click', submitForm);
+
+// DOB auto-format: types as DD/MM/YYYY
+document.getElementById('dob').addEventListener('input', function() {
+  let v = this.value.replace(/\D/g, '').slice(0, 8);
+  let out = '';
+  if (v.length > 0) out = v.slice(0, 2);
+  if (v.length > 2) out += '/' + v.slice(2, 4);
+  if (v.length > 4) out += '/' + v.slice(4, 8);
+  this.value = out;
+});
 
 // Inline field validation
 document.getElementById('phone').addEventListener('input', function() {
