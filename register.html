@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
 <meta http-equiv="X-Frame-Options" content="DENY"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
 <title>Student Registration — Vidya The Change</title>
 <script src="nav.js"></script>
 <style>
@@ -234,11 +236,8 @@ input.valid{border-color:#4d7c4d !important;}
 </div>
 
 
-<script>
-const SUPA_URL = 'https://ninrmohzytxcygpolqsh.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
-
-async function submitForm() {
+<script src="register.js"></script>
+<!--
   const btn = document.getElementById('submitBtn');
   const err = document.getElementById('errMsg');
   const success = document.getElementById('successBox');
@@ -377,6 +376,6 @@ document.getElementById('email').addEventListener('input', function() {
     document.getElementById('emailErr').textContent = valid ? '' : 'Enter a valid email address.';
   }
 });
-</script>
+-->
 </body>
 </html>

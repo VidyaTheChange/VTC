@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
 <meta http-equiv="X-Frame-Options" content="DENY"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
 <title>Share Your Feedback — Vidya The Change</title>
 <script src="nav.js"></script>
 <style>
@@ -116,7 +118,7 @@ textarea{resize:vertical;min-height:75px}
     </div>
 
     <div class="field">
-      <label>School or College Name</label>
+      <label>School or College Name <span style="color:var(--orange)">*</span></label>
       <input type="text" id="fb-school" placeholder="Name of your school or college"/>
     </div>
 
@@ -234,11 +236,8 @@ textarea{resize:vertical;min-height:75px}
 </div>
 
 
-<script>
-const SUPA_URL = 'https://ninrmohzytxcygpolqsh.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
-
-/* Star rating labels */
+<script src="feedback.js"></script>
+<!--
 const ratingLabels = {1:'Not helpful',2:'Okay',3:'Good',4:'Very Good',5:'Excellent'};
 document.querySelectorAll('input[name="rating"]').forEach(r => {
   r.addEventListener('change', () => {
@@ -324,6 +323,6 @@ function showErr(msg) {
   err.textContent = msg;
   err.style.display = 'block';
 }
-</script>
+-->
 </body>
 </html>
