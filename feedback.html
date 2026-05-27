@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-Frame-Options" content="DENY"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
+<title>Share Your Feedback — Vidya The Change</title>
+<script src="nav.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+.reg-hero{
+  padding:7rem 2rem 3.5rem;text-align:center;
+  background:linear-gradient(160deg,#fffde8 0%,#fff5c5 100%);
+  border-bottom:1px solid var(--border);
+}
+.section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);
+  text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
+h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-family:var(--font);
+  letter-spacing:-0.02em;margin-bottom:0.75rem}
+h1 strong{font-weight:700;color:var(--orange)}
+.hero-sub{font-size:0.95rem;color:var(--muted);max-width:480px;margin:0 auto}
+
+.form-wrap{max-width:640px;margin:2.5rem auto;padding:0 2rem 4rem}
+
+.form-card{background:#fff;border:1px solid var(--border);border-radius:16px;
+  padding:2rem;margin-bottom:1rem}
+.form-card-title{font-size:11px;font-weight:700;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--orange);margin-bottom:1.25rem;
+  padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+
+.field{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.85rem}
+.field:last-child{margin-bottom:0}
+label{font-size:11px;font-weight:600;color:var(--text);letter-spacing:0.03em}
+.req{color:var(--orange)}
+input,select,textarea{
+  box-sizing:border-box;background:var(--bg2);border:1px solid var(--border);
+  border-radius:8px;padding:0.6rem 0.85rem;font-size:13px;color:var(--text);
+  font-family:var(--sans);outline:none;transition:border-color 0.2s;width:100%
+}
+input:focus,select:focus,textarea:focus{border-color:var(--orange)}
+select option{background:#fff}
+textarea{resize:vertical;min-height:75px}
+
+/* STAR RATING */
+.star-row{display:flex;gap:0.35rem;flex-direction:row-reverse;justify-content:flex-end}
+.star-row input{display:none}
+.star-row label{
+  font-size:1.8rem;cursor:pointer;color:#ddd;
+  transition:color 0.15s;padding:0;background:none;
+  border:none;border-radius:0;width:auto;
+}
+.star-row label:hover,
+.star-row label:hover ~ label,
+.star-row input:checked ~ label{color:#f5a800}
+
+/* CHOICE BUTTONS */
+.choice-row{display:flex;gap:0.5rem;flex-wrap:wrap}
+.choice-btn{
+  background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;
+  padding:0.45rem 1rem;font-size:12px;font-weight:600;color:var(--text);
+  cursor:pointer;transition:all 0.2s;user-select:none;
+}
+.choice-btn:hover{border-color:var(--orange);color:var(--orange)}
+.choice-btn.selected{background:var(--orange);border-color:var(--orange);color:#fff}
+
+.submit-btn{
+  width:100%;background:var(--orange);color:#fff;border:none;
+  padding:0.9rem;border-radius:8px;font-size:14px;font-weight:700;
+  cursor:pointer;transition:all 0.2s;font-family:var(--sans);margin-top:0.5rem
+}
+.submit-btn:hover{background:#c85600;transform:translateY(-1px)}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+
+.success-box{
+  display:none;background:#f0faf3;border:1px solid #a8d4b0;
+  border-radius:12px;padding:2rem;text-align:center;margin-top:1rem
+}
+.success-box h3{font-size:1.2rem;font-weight:700;color:var(--green);
+  font-family:var(--font);margin-bottom:0.5rem}
+.success-box p{font-size:13px;color:var(--muted)}
+.err-msg{
+  font-size:13px;color:#c0392b;background:#fdf0f0;
+  border:1px solid #f5c6c6;border-radius:8px;
+  padding:0.65rem 0.9rem;margin-top:0.5rem;display:none
+}
+
+
+@media(max-width:480px){
+  .form-wrap{padding:0 1.25rem 3rem}
+  .star-row label{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="reg-hero">
+  <div class="section-tag">Your voice matters</div>
+  <h1>Share your <strong>feedback</strong></h1>
+  <p class="hero-sub">Attended one of our programs? Tell us what you thought — your feedback helps us improve and reach more students.</p>
+</div>
+
+<div class="form-wrap">
+
+  <!-- ALL QUESTIONS IN ONE FLOW -->
+  <div class="form-card">
+
+    <div class="field">
+      <label>Your Name <span style="font-size:10px;color:var(--muted);font-weight:400">(optional)</span></label>
+      <input type="text" id="fb-name" placeholder="Enter your name"/>
+    </div>
+
+    <div class="field">
+      <label>School or College Name</label>
+      <input type="text" id="fb-school" placeholder="Name of your school or college"/>
+    </div>
+
+    <div class="field">
+      <label>Which program did you attend?</label>
+      <select id="fb-program">
+        <option value="">Select a program</option>
+        <option>Creators Program</option>
+        <option>Artificial Intelligence Skills</option>
+        <option>Personal Development &amp; Communication</option>
+        <option>Emotional Intelligence &amp; Creativity</option>
+        <option>Talent Nurturing</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>How would you rate the program overall?</label>
+      <div class="star-row" id="starRow">
+        <input type="radio" name="rating" id="s5" value="5"/><label for="s5" title="Excellent">★</label>
+        <input type="radio" name="rating" id="s4" value="4"/><label for="s4" title="Very Good">★</label>
+        <input type="radio" name="rating" id="s3" value="3"/><label for="s3" title="Good">★</label>
+        <input type="radio" name="rating" id="s2" value="2"/><label for="s2" title="Okay">★</label>
+        <input type="radio" name="rating" id="s1" value="1"/><label for="s1" title="Not helpful">★</label>
+      </div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px" id="ratingLabel">Tap a star to rate</div>
+    </div>
+
+    <div class="field">
+      <label>Did your trainer explain things in a clear and easy way?</label>
+      <div class="choice-row" id="trainerRow">
+        <div class="choice-btn" onclick="selectChoice(this,'trainerRow','fb-trainer')">Yes, very clearly</div>
+        <div class="choice-btn" onclick="selectChoice(this,'trainerRow','fb-trainer')">Mostly</div>
+        <div class="choice-btn" onclick="selectChoice(this,'trainerRow','fb-trainer')">Not really</div>
+      </div>
+      <input type="hidden" id="fb-trainer"/>
+    </div>
+
+    <div class="field">
+      <label>Were you given enough support and guidance throughout?</label>
+      <div class="choice-row" id="supportRow">
+        <div class="choice-btn" onclick="selectChoice(this,'supportRow','fb-support')">Yes, enough</div>
+        <div class="choice-btn" onclick="selectChoice(this,'supportRow','fb-support')">Mostly</div>
+        <div class="choice-btn" onclick="selectChoice(this,'supportRow','fb-support')">Could be better</div>
+      </div>
+      <input type="hidden" id="fb-support"/>
+    </div>
+
+    <div class="field">
+      <label>What did you like the most about the program?</label>
+      <textarea id="fb-enjoyed" placeholder="Tell us what you liked the most…"></textarea>
+    </div>
+
+    <div class="field">
+      <label>What did you not like about the program?</label>
+      <textarea id="fb-challenges" placeholder="Anything you felt could be better — topics, timing, support, or anything else…"></textarea>
+    </div>
+
+    <div class="field">
+      <label>After this program, do you feel more confident?</label>
+      <div class="choice-row" id="confidentRow">
+        <div class="choice-btn" onclick="selectChoice(this,'confidentRow','fb-confident')">Yes, much more</div>
+        <div class="choice-btn" onclick="selectChoice(this,'confidentRow','fb-confident')">A little more</div>
+        <div class="choice-btn" onclick="selectChoice(this,'confidentRow','fb-confident')">No change</div>
+      </div>
+      <input type="hidden" id="fb-confident"/>
+    </div>
+
+    <div class="field">
+      <label>Would you recommend this program to your friends?</label>
+      <div class="choice-row" id="recommendRow">
+        <div class="choice-btn" onclick="selectChoice(this,'recommendRow','fb-recommend')">Yes, definitely!</div>
+        <div class="choice-btn" onclick="selectChoice(this,'recommendRow','fb-recommend')">Maybe</div>
+        <div class="choice-btn" onclick="selectChoice(this,'recommendRow','fb-recommend')">No</div>
+      </div>
+      <input type="hidden" id="fb-recommend"/>
+    </div>
+
+    <div class="field">
+      <label>What is the one thing you will always remember from this program?</label>
+      <textarea id="fb-remember" placeholder="A lesson, a moment, an activity — anything that stayed with you…"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Any message for the VTC team? <span style="font-size:10px;color:var(--muted);font-weight:400">(optional)</span></label>
+      <textarea id="fb-message" placeholder="Anything you'd like to say to our team…"></textarea>
+    </div>
+
+  </div>
+
+  <!-- CAPTCHA & SUBMIT -->
+  <div class="form-card">
+    <div class="form-card-title">Verify &amp; Submit</div>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+
+      <div class="field">
+        <label>Quick check: What is <strong id="mathQ"></strong>?</label>
+        <input type="text" id="mathAns" placeholder="Enter answer" maxlength="3" autocomplete="off" style="max-width:120px"/>
+      </div>
+
+      <!-- Honeypot -->
+      <input type="text" id="honeypot" name="website" tabindex="-1" autocomplete="off"
+        style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"/>
+
+      <button class="submit-btn" id="submitBtn">Submit Feedback →</button>
+      <div class="err-msg" id="errMsg"></div>
+    </div>
+  </div>
+
+  <div class="success-box" id="successBox">
+    <h3>Thank you for your feedback! 🙏</h3>
+    <p>Your response means a lot to us. We will use it to keep improving our programs for every student in rural Andhra Pradesh.</p>
+  </div>
+
+</div>
+
+
+<script>
+const SUPA_URL = 'https://ninrmohzytxcygpolqsh.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbnJtb2h6eXR4Y3lncG9scXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzMxNDIsImV4cCI6MjA5NDI0OTE0Mn0.tDHfdfO_O1hnA3UbPSj_0_38dJ6dKNqKvrC5GAtKJRM';
+
+/* Star rating labels */
+const ratingLabels = {1:'Not helpful',2:'Okay',3:'Good',4:'Very Good',5:'Excellent'};
+document.querySelectorAll('input[name="rating"]').forEach(r => {
+  r.addEventListener('change', () => {
+    document.getElementById('ratingLabel').textContent = ratingLabels[r.value] + ' (' + r.value + '/5)';
+  });
+});
+
+/* Choice button selection */
+function selectChoice(el, rowId, hiddenId) {
+  document.querySelectorAll('#' + rowId + ' .choice-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById(hiddenId).value = el.textContent.trim();
+}
+
+/* Math CAPTCHA */
+const _a = Math.floor(Math.random() * 9) + 1;
+const _b = Math.floor(Math.random() * 9) + 1;
+document.getElementById('mathQ').textContent = _a + ' + ' + _b;
+const _ans = _a + _b;
+
+/* Submit */
+document.getElementById('submitBtn').addEventListener('click', async () => {
+  const btn   = document.getElementById('submitBtn');
+  const err   = document.getElementById('errMsg');
+  const succ  = document.getElementById('successBox');
+  err.style.display = 'none';
+
+  const rating = document.querySelector('input[name="rating"]:checked');
+
+  const data = {
+    name:       document.getElementById('fb-name').value.trim() || null,
+    school:     document.getElementById('fb-school').value.trim() || null,
+    program:    document.getElementById('fb-program').value || null,
+    rating:     rating ? parseInt(rating.value) : null,
+    trainer:    document.getElementById('fb-trainer').value || null,
+    support:    document.getElementById('fb-support').value || null,
+    enjoyed:    document.getElementById('fb-enjoyed').value.trim() || null,
+    challenges: document.getElementById('fb-challenges').value.trim() || null,
+    confident:  document.getElementById('fb-confident').value || null,
+    recommend:  document.getElementById('fb-recommend').value || null,
+    remember:   document.getElementById('fb-remember').value.trim() || null,
+    message:    document.getElementById('fb-message').value.trim() || null,
+    created_at: new Date().toISOString()
+  };
+
+  if (document.getElementById('honeypot').value) return;
+  if (parseInt(document.getElementById('mathAns').value) !== _ans) {
+    showErr('Incorrect answer to the quick check. Please try again.'); return;
+  }
+
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  try {
+    const r = await fetch(`${SUPA_URL}/rest/v1/feedback`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (r.ok || r.status === 201) {
+      succ.style.display = 'block';
+      btn.style.display  = 'none';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    } else {
+      const body = await r.text();
+      throw new Error(`HTTP ${r.status}: ${body}`);
+    }
+  } catch(e) {
+    showErr('Something went wrong: ' + e.message);
+    btn.textContent = 'Submit Feedback →';
+    btn.disabled = false;
+  }
+});
+
+function showErr(msg) {
+  const err = document.getElementById('errMsg');
+  err.textContent = msg;
+  err.style.display = 'block';
+}
+</script>
+</body>
+</html>

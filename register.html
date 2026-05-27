@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-Frame-Options" content="DENY"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
 <title>Student Registration — Vidya The Change</title>
 <script src="nav.js"></script>
 <style>
@@ -24,12 +28,13 @@ h1 strong{font-weight:700;color:var(--orange)}
   text-transform:uppercase;color:var(--orange);margin-bottom:1.25rem;
   padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
 
-.field-pair{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;align-items:start}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+.field-pair{display:contents;}
 .field-full{grid-column:1/-1}
 .field{display:flex;flex-direction:column;gap:0.3rem}
 label{font-size:11px;font-weight:600;color:var(--text);letter-spacing:0.03em}
 .req{color:var(--orange)}
-input,select,textarea{background:var(--bg2);border:1px solid var(--border);
+input,select,textarea{box-sizing:border-box;background:var(--bg2);border:1px solid var(--border);
   border-radius:8px;padding:0.6rem 0.85rem;font-size:13px;color:var(--text);
   font-family:var(--sans);outline:none;transition:border-color 0.2s;width:100%}
 input:focus,select:focus,textarea:focus{border-color:var(--orange)}
@@ -47,13 +52,11 @@ textarea{resize:vertical;min-height:80px}
 .success-box h3{font-size:1.2rem;font-weight:700;color:var(--green);
   font-family:var(--font);margin-bottom:0.5rem}
 .success-box p{font-size:13px;color:var(--muted)}
+.err-msg{font-size:13px;color:#c0392b;background:#fdf0f0;border:1px solid #f5c6c6;border-radius:8px;padding:0.65rem 0.9rem;margin-top:0.5rem;display:none;}
 .inline-err{font-size:11px;color:#c0392b;min-height:14px;}
 input.invalid{border-color:#c0392b !important;}
 input.valid{border-color:#4d7c4d !important;}
 
-footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
-  text-align:center;background:var(--card)}
-.footer-copy{font-size:11px;color:var(--muted)}
 
 @media(max-width:640px){
   .field-grid{grid-template-columns:1fr}
@@ -194,8 +197,35 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
     </div>
   </div>
 
-  <button class="submit-btn" id="submitBtn">Submit Registration →</button>
-  <div class="err-msg" id="errMsg"></div>
+  <!-- Honeypot: hidden from humans, bots fill it in -->
+  <input type="text" id="honeypot" name="website" tabindex="-1" autocomplete="off"
+    style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"/>
+
+  <div class="form-card">
+    <div class="form-card-title">Verify &amp; Submit</div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+
+      <div class="field">
+        <label>Quick check: What is <strong id="mathQ"></strong>? <span class="req">*</span></label>
+        <input type="text" id="mathAns" placeholder="Enter answer" maxlength="3" autocomplete="off" style="max-width:120px;"/>
+        <span class="inline-err" id="mathErr"></span>
+      </div>
+
+      <div class="field">
+        <label style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;cursor:pointer;font-weight:400;letter-spacing:0;">
+          <input type="checkbox" id="consentCheck" style="margin-top:3px;flex-shrink:0;accent-color:var(--orange);width:16px;height:16px;"/>
+          <span>I confirm that I have read and agree to the
+            <a href="privacy.html" target="_blank" style="color:var(--orange);">Privacy Policy</a>.
+            If the applicant is under 18, I confirm I am a parent or guardian giving consent
+            for their data to be collected. <span class="req">*</span>
+          </span>
+        </label>
+      </div>
+
+      <button class="submit-btn" id="submitBtn">Submit Registration →</button>
+      <div class="err-msg" id="errMsg"></div>
+    </div>
+  </div>
 
   <div class="success-box" id="successBox">
     <h3>Registration received! 🎉</h3>
@@ -203,9 +233,6 @@ footer{padding:1.5rem 2rem;border-top:1px solid var(--border);
   </div>
 </div>
 
-<footer>
-  <div class="footer-copy">© 2024 Vidya The Change · Registered Society · Tadipatri, Anantapur District, AP</div>
-</footer>
 
 <script>
 const SUPA_URL = 'https://ninrmohzytxcygpolqsh.supabase.co';
@@ -222,17 +249,6 @@ async function submitForm() {
 
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
-
-  if (!/^[0-9]{10}$/.test(phone)) {
-    err.textContent = 'Please enter a valid 10-digit phone number.';
-    err.style.display = 'block';
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    err.textContent = 'Please enter a valid email address.';
-    err.style.display = 'block';
-    return;
-  }
 
   const data = {
     fullname:   document.getElementById('fullname').value.trim(),
@@ -253,10 +269,39 @@ async function submitForm() {
     created_at: new Date().toISOString()
   };
 
+  // 1. Required fields first
   const required = ['fullname','fathername','mothername','gender','phone','email',
                     'address','school','classyear','program','reason','source'];
   if (required.some(f => !data[f])) {
     err.textContent = 'Please fill in all required fields marked with *.';
+    err.style.display = 'block';
+    return;
+  }
+
+  // 2. Format validation
+  if (!/^[0-9]{10}$/.test(phone)) {
+    err.textContent = 'Please enter a valid 10-digit WhatsApp number.';
+    err.style.display = 'block';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    err.textContent = 'Please enter a valid email address.';
+    err.style.display = 'block';
+    return;
+  }
+
+  // 3. Bot checks
+  if (document.getElementById('honeypot').value) return;
+
+  if (parseInt(document.getElementById('mathAns').value) !== _ans) {
+    err.textContent = 'Incorrect answer to the quick check. Please try again.';
+    err.style.display = 'block';
+    return;
+  }
+
+  // 4. Consent
+  if (!document.getElementById('consentCheck').checked) {
+    err.textContent = 'Please confirm your consent to the privacy policy before submitting.';
     err.style.display = 'block';
     return;
   }
@@ -281,9 +326,10 @@ async function submitForm() {
       btn.style.display = 'none';
       ['fullname','fathername','mothername','dob','gender','phone','email',
        'address','school','classyear','medium','smartphone','laptop',
-       'program','reason','source'].forEach(id => {
+       'program','reason','source','mathAns'].forEach(id => {
         document.getElementById(id).value = '';
       });
+      document.getElementById('consentCheck').checked = false;
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     } else {
       const body = await r.text();
@@ -296,6 +342,12 @@ async function submitForm() {
     btn.disabled = false;
   }
 }
+
+// Simple math CAPTCHA
+const _a = Math.floor(Math.random() * 9) + 1;
+const _b = Math.floor(Math.random() * 9) + 1;
+document.getElementById('mathQ').textContent = _a + ' + ' + _b;
+const _ans = _a + _b;
 
 document.getElementById('submitBtn').addEventListener('click', submitForm);
 

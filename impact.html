@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-Frame-Options" content="DENY"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co; img-src 'self' data: https:; style-src 'self' 'unsafe-inline';"/>
+<title>Our Impact — Vidya The Change</title>
+<script src="nav.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* HERO */
+.hero{
+  padding:8rem 2rem 5rem;
+  background:linear-gradient(160deg,#fffde8 0%,#fff5c5 100%);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+.section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);
+  text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
+h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:400;font-family:var(--font);
+  letter-spacing:-0.02em;margin-bottom:0.75rem;color:var(--text)}
+h1 strong{font-weight:700;color:var(--orange)}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto}
+
+/* WRAP */
+.wrap{max-width:980px;margin:0 auto;padding:4.5rem 2rem}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:400;font-family:var(--font);
+  letter-spacing:-0.02em;margin-bottom:0.4rem}
+h2 em{font-style:normal;color:var(--orange)}
+.sub{font-size:13px;color:var(--muted);margin-bottom:2.5rem;line-height:1.7;max-width:520px}
+
+/* PHOTO STRIP */
+.photo-strip{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;
+  border-radius:12px;overflow:hidden;margin-bottom:3.5rem}
+.photo-strip img{width:100%;height:320px;object-fit:cover;object-position:center 30%;display:block}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3.5rem}
+.stat-card{
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:2rem 1.5rem;text-align:center;transition:all 0.2s;
+}
+.stat-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,100,0,0.08)}
+.stat-num{font-size:2.8rem;font-weight:700;font-family:var(--font);
+  color:var(--orange);line-height:1;margin-bottom:0.4rem}
+.stat-label{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* YEAR BADGE */
+.year-badge{display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange-light);border:1px solid #f0c090;
+  border-radius:100px;padding:0.3rem 1rem;font-size:11px;
+  color:var(--orange);font-weight:700;letter-spacing:0.06em;margin-bottom:1.25rem}
+
+/* OUTCOME CARDS */
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:3.5rem}
+.outcome-card{
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:2rem;
+  transition:all 0.2s;
+}
+.outcome-card:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(232,100,0,0.07)}
+.outcome-icon{font-size:1.75rem;margin-bottom:0.75rem}
+.outcome-card h3{font-size:14px;font-weight:700;color:var(--text);
+  margin-bottom:1rem;font-family:var(--font)}
+.outcome-card ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.outcome-card ul li{font-size:12px;color:var(--muted);display:flex;
+  align-items:flex-start;gap:10px;line-height:1.5;
+  padding-bottom:0.6rem;border-bottom:1px solid var(--border)}
+.outcome-card ul li:last-child{border-bottom:none;padding-bottom:0}
+.outcome-card ul li::before{content:'✓';color:var(--orange);
+  font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* HOW IT WORKS */
+.how-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:3.5rem}
+.how-step{padding:1.75rem 1.25rem;border-right:1px solid var(--border);
+  background:#fff;transition:background 0.2s}
+.how-step:last-child{border-right:none}
+.how-step:hover{background:var(--bg2)}
+.how-num{font-size:1.8rem;font-weight:700;color:var(--orange);
+  font-family:var(--font);line-height:1;margin-bottom:0.6rem}
+.how-step h3{font-size:13px;font-weight:700;margin-bottom:0.35rem;color:var(--text)}
+.how-step p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* STORIES */
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3.5rem}
+.story{background:#fff;border:1px solid var(--border);border-radius:12px;
+  padding:1.75rem;transition:border-color 0.2s;display:flex;flex-direction:column}
+.story:hover{border-color:var(--orange)}
+.story-quote{font-size:0.875rem;line-height:1.8;color:var(--text);margin-bottom:1.25rem;
+  font-family:var(--font);font-style:italic;flex:1;
+  padding-left:1rem;border-left:3px solid var(--orange)}
+.story-author{display:flex;align-items:center;gap:10px}
+.avatar{width:34px;height:34px;border-radius:50%;background:var(--orange-light);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:var(--orange);flex-shrink:0}
+.author-name{font-size:12px;font-weight:700;color:var(--text)}
+.author-loc{font-size:11px;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--bg2);border:1px solid var(--border);
+  border-radius:14px;padding:2.5rem;text-align:center}
+.cta h3{font-size:1.4rem;font-weight:400;font-family:var(--font);
+  color:var(--text);margin-bottom:0.4rem}
+.cta h3 strong{font-weight:700;color:var(--orange)}
+.cta p{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+.cta-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;border:none;
+  padding:0.75rem 1.75rem;border-radius:7px;font-size:13px;font-weight:700;
+  text-decoration:none;display:inline-block;transition:all 0.2s;
+  box-shadow:0 3px 14px rgba(232,100,0,0.3)}
+.btn-primary:hover{background:#c85600;transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--text);border:1px solid var(--border);
+  padding:0.75rem 1.75rem;border-radius:7px;font-size:13px;font-weight:700;
+  text-decoration:none;display:inline-block;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  font-weight:700;color:var(--muted);white-space:nowrap}
+
+
+@media(max-width:768px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .outcome-grid{grid-template-columns:1fr 1fr}
+  .how-wrap{grid-template-columns:1fr 1fr}
+  .stories{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .outcome-grid{grid-template-columns:1fr}
+  .photo-strip{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr}
+  .how-wrap{grid-template-columns:1fr}
+  .how-step{border-right:none;border-bottom:1px solid var(--border)}
+  .how-step:last-child{border-bottom:none}
+  .wrap{padding:3rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="section-tag">Annual Report · 2023–2024</div>
+  <h1>Real change, <strong>measured impact</strong></h1>
+  <p class="hero-sub">Every number here represents a student in rural Andhra Pradesh who gained a skill, a confidence, and a new sense of what's possible.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- PHOTOS -->
+  <div class="photo-strip">
+    <img src="images/image1.jpeg" alt="VTC program — large group session"/>
+    <img src="images/image2.jpeg" alt="VTC team with students"/>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">250+</div>
+      <div class="stat-label">Children and families reached through programs and awareness sessions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Awareness programs conducted across schools in Anantapur Division</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Hands-on skill development training programs delivered to students</div>
+    </div>
+  </div>
+
+  <!-- OUTCOMES -->
+  <div class="year-badge">2023 – 2024 Outcomes</div>
+  <h2>What our programs <em>achieved</em></h2>
+  <p class="sub">Documented outcomes from Anantapur Division schools — from our Annual Report 2023–24.</p>
+
+  <div class="outcome-grid">
+    <div class="outcome-card">
+      <div class="outcome-icon">📚</div>
+      <h3>Student Outcomes — Class 3, 4 &amp; 5</h3>
+      <ul>
+        <li>Significant improvement in student engagement and attentive listening</li>
+        <li>Stronger behavioural discipline and academic enthusiasm</li>
+        <li>Students advanced from basic to intermediate level of proficiency</li>
+        <li>Greater willingness to embrace challenges independently</li>
+        <li>Heightened self-interest in academic pursuits</li>
+      </ul>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-icon">🧠</div>
+      <h3>Emotional Intelligence &amp; Creativity Module</h3>
+      <ul>
+        <li>Improved student self-awareness and confidence</li>
+        <li>Better classroom organisation and cleanliness</li>
+        <li>Stronger teamwork dynamics among students</li>
+        <li>Overall joy and enthusiasm towards learning</li>
+        <li>School management praised holistic improvement</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">How we deliver</div>
+    <div class="divider-line"></div>
+  </div>
+  <h2>From school to <em>skill</em></h2>
+  <p class="sub">We partner directly with rural government schools — no middlemen, full impact.</p>
+  <div class="how-wrap">
+    <div class="how-step">
+      <div class="how-num">01</div>
+      <h3>School partnership</h3>
+      <p>We identify and partner with rural government schools in Anantapur Division.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">02</div>
+      <h3>Program design</h3>
+      <p>Curriculum is tailored for each age group and delivered in Telugu and English.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">03</div>
+      <h3>Hands-on delivery</h3>
+      <p>Trained facilitators run interactive, project-based sessions at the school.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">04</div>
+      <h3>Future-ready students</h3>
+      <p>Students leave with real skills, confidence, and projects they built themselves.</p>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">Stories of change</div>
+    <div class="divider-line"></div>
+  </div>
+  <h2>Voices from <em>our students</em></h2>
+  <p class="sub">Real students, real skills, real futures — from the rural schools of Anantapur.</p>
+  <div class="stories">
+    <div class="story">
+      <p class="story-quote">The Creators Program made me realise I can build things, not just study them. I designed my first app at age 15 — something I never imagined possible in my village.</p>
+      <div class="story-author">
+        <div class="avatar">R</div>
+        <div><div class="author-name">Ravi Teja</div><div class="author-loc">Class 10, Tadipatri Govt School</div></div>
+      </div>
+    </div>
+    <div class="story">
+      <p class="story-quote">The personal development sessions taught me how to speak in front of people. I was shy before. Now I lead my class and represented our school at a district event.</p>
+      <div class="story-author">
+        <div class="avatar">P</div>
+        <div><div class="author-name">Priya Kumari</div><div class="author-loc">Class 8, Anantapur District</div></div>
+      </div>
+    </div>
+    <div class="story">
+      <p class="story-quote">Vidya The Change helped our students think beyond marks. These are the skills employers actually want — and finally someone is teaching them here in rural AP.</p>
+      <div class="story-author">
+        <div class="avatar">K</div>
+        <div><div class="author-name">K. Suresh, Principal</div><div class="author-loc">Govt School, Anantapur Division</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK CTA -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+    padding:2rem;text-align:center;margin-bottom:3.5rem">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem">💬</div>
+    <h3 style="font-size:1.1rem;font-weight:700;font-family:var(--font);color:var(--text);margin-bottom:0.4rem">Attended one of our programs?</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1.25rem">Your feedback helps us grow and improve for every student who comes after you.</p>
+    <a href="feedback.html" class="btn-primary">Share your feedback →</a>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h3>Want to be part of this <strong>impact?</strong></h3>
+    <p>Sponsor our programs, volunteer as a facilitator, or bring us to your school — every bit of support creates real change.</p>
+    <div class="cta-btns">
+      <a href="index.html#involve" class="btn-primary">Get involved →</a>
+      <a href="programs.html" class="btn-outline">Explore programs</a>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

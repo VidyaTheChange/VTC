@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /register.html
+Allow: /
+
+Sitemap: https://vidyathechange.org/sitemap.xml
