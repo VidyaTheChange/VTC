@@ -1,0 +1,252 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-Frame-Options" content="DENY"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self' https://*.supabase.co; img-src 'self' data:; style-src 'self' 'unsafe-inline';"/>
+<title>Contact Us — Vidya The Change</title>
+<script src="/nav.js"></script>
+<style>
+
+.contact-hero{padding:7rem 2rem 3rem;text-align:center;background:var(--bg)}
+.section-tag{font-size:10px;letter-spacing:0.2em;color:var(--orange);
+  text-transform:uppercase;margin-bottom:0.75rem;font-weight:700}
+h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-family:var(--font);
+  letter-spacing:-0.02em;margin-bottom:0.75rem}
+h1 strong{font-weight:700;color:var(--orange)}
+.hero-sub{font-size:0.95rem;color:var(--muted);max-width:480px;margin:0 auto}
+
+/* ── Contact methods ── */
+.contact-wrap{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:3rem}
+.contact-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.75rem 1.5rem;text-align:center;
+}
+.contact-card-icon{font-size:2rem;margin-bottom:0.75rem;line-height:1}
+.contact-card h3{font-size:13px;font-weight:700;color:var(--text);
+  margin-bottom:0.35rem;font-family:var(--sans)}
+.contact-card p{font-size:12px;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+.contact-card a.cta{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0.55rem 1.1rem;border-radius:8px;font-size:12px;font-weight:700;
+  text-decoration:none;transition:all 0.2s;
+}
+.cta-wa{background:#25d366;color:#fff;box-shadow:0 3px 12px rgba(37,211,102,0.3)}
+.cta-wa:hover{background:#1ebe5d;transform:translateY(-1px)}
+.cta-email{background:var(--orange);color:#fff;box-shadow:0 3px 12px rgba(232,100,0,0.25)}
+.cta-email:hover{background:#c85600;transform:translateY(-1px)}
+.cta-addr{background:var(--bg2);color:var(--text);border:1px solid var(--border)}
+.cta-addr:hover{border-color:var(--orange);color:var(--orange)}
+.contact-card .sub{font-size:10px;color:var(--muted);margin-top:0.6rem}
+
+/* ── Divider ── */
+.section-divider{
+  border:none;border-top:1px solid var(--border);
+  max-width:860px;margin:0 auto 2.5rem;
+}
+
+/* ── Get Involved ── */
+.involve-wrap{max-width:860px;margin:0 auto;padding:0 2rem 5rem}
+.involve-header{margin-bottom:1.5rem}
+.involve-header h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:400;
+  font-family:var(--font);color:var(--text);margin-bottom:0.4rem}
+.involve-header h2 em{font-style:normal;color:var(--orange);font-weight:700}
+.involve-header p{font-size:13px;color:var(--muted)}
+
+.involve-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+.involve-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:2rem;border-top:4px solid var(--orange);
+}
+.involve-card h3{font-size:1rem;font-weight:400;margin-bottom:0.5rem;
+  font-family:var(--font);color:var(--text)}
+.involve-card h3 strong{font-weight:700;color:var(--orange)}
+.involve-card>p{font-size:13px;color:var(--muted);margin-bottom:1.25rem;line-height:1.7}
+.sponsor-icon{font-size:2rem;margin-bottom:0.75rem;line-height:1}
+.sponsor-preview{
+  background:var(--bg2);border:1px solid var(--border);border-radius:8px;
+  padding:1rem 1.1rem;margin-bottom:1.25rem;
+  font-size:12px;color:var(--muted);line-height:1.75;
+}
+.btn-wa,.btn-email{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0.55rem 1.1rem;border-radius:8px;font-size:12px;font-weight:700;
+  text-decoration:none;transition:all 0.2s;margin-right:0.4rem;margin-bottom:0.4rem;
+}
+.btn-wa{background:#25d366;color:#fff;box-shadow:0 3px 12px rgba(37,211,102,0.3)}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-1px)}
+.btn-email{background:var(--orange);color:#fff;box-shadow:0 3px 12px rgba(232,100,0,0.2)}
+.btn-email:hover{background:#c85600;transform:translateY(-1px)}
+
+/* ── Volunteer form ── */
+.vol-form{display:flex;flex-direction:column;gap:0.6rem}
+.vol-form label{font-size:11px;font-weight:600;color:var(--text);letter-spacing:0.03em}
+.vol-form input,.vol-form select,.vol-form textarea{
+  box-sizing:border-box;background:var(--bg2);border:1px solid var(--border);
+  border-radius:8px;padding:0.6rem 0.85rem;font-size:13px;color:var(--text);
+  font-family:var(--sans);outline:none;transition:border-color 0.2s;width:100%;
+}
+.vol-form input:focus,.vol-form select:focus,.vol-form textarea:focus{border-color:var(--orange)}
+.vol-form select option{background:#fff}
+.vol-form textarea{resize:vertical;min-height:80px}
+.vol-form input.invalid{border-color:#c0392b !important}
+.vol-form input.valid{border-color:#4d7c4d !important}
+.vol-inline-err{font-size:11px;color:#c0392b;min-height:14px}
+.vol-submit{
+  background:var(--orange);color:#fff;border:none;
+  padding:0.85rem;border-radius:8px;font-size:14px;font-weight:700;
+  cursor:pointer;transition:all 0.2s;font-family:var(--sans);
+}
+.vol-submit:hover{background:#c85600;transform:translateY(-1px)}
+.vol-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.vol-err{font-size:13px;color:#c0392b;background:#fdf0f0;border:1px solid #f5c6c6;
+  border-radius:8px;padding:0.65rem 0.9rem;display:none}
+
+/* ── Inline success ── */
+.form-success{
+  display:none;background:#f0faf3;border:1px solid #a8d4b0;
+  border-radius:12px;padding:1.75rem;text-align:center;margin-top:1rem;
+}
+.form-success-icon{font-size:2.5rem;margin-bottom:0.75rem}
+.form-success h3{font-size:1.15rem;font-weight:700;color:#4d7c4d;
+  font-family:var(--font);margin-bottom:0.5rem}
+.form-success p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.form-success-again{
+  background:none;border:1.5px solid var(--orange);color:var(--orange);
+  padding:0.55rem 1.25rem;border-radius:8px;font-size:13px;font-weight:600;
+  cursor:pointer;font-family:var(--sans);transition:all 0.2s;
+}
+.form-success-again:hover{background:var(--orange);color:#fff}
+.vol-form.disabled-form{opacity:0.55;pointer-events:none}
+
+@media(max-width:700px){
+  .contact-cards{grid-template-columns:1fr}
+  .involve-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="contact-hero">
+  <div class="section-tag">We'd love to hear from you</div>
+  <h1>Get in <strong>Touch</strong></h1>
+  <p class="hero-sub">Reach out to us directly — ask about our programs, volunteer, sponsor a student, or just say hello.</p>
+</div>
+
+<!-- ── CONTACT METHODS ── -->
+<div class="contact-wrap">
+  <div class="contact-cards">
+
+    <div class="contact-card">
+      <div class="contact-card-icon">💬</div>
+      <h3>WhatsApp</h3>
+      <p>The fastest way to reach us. We typically reply within a few hours.</p>
+      <a href="https://wa.me/919398177507?text=Namaste!%20I%20visited%20your%20website%20and%20would%20like%20to%20know%20more%20about%20Vidya%20The%20Change." target="_blank" rel="noopener" class="cta cta-wa">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <p class="sub">+91 93981 77507</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <h3>Email</h3>
+      <p>For detailed enquiries, partnerships, or formal communication.</p>
+      <a href="mailto:admin@vidyathechange.org?subject=Enquiry%20from%20Website&body=Namaste!%20I%20visited%20your%20website%20and%20would%20like%20to%20know%20more%20about%20Vidya%20The%20Change." class="cta cta-email">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Send an Email
+      </a>
+      <p class="sub">admin@vidyathechange.org</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card-icon">📍</div>
+      <h3>Address</h3>
+      <p>Based in Tadipatri, Anantapur District, Andhra Pradesh.</p>
+      <a href="https://maps.google.com/?q=Tadipatri,Anantapur,Andhra+Pradesh" target="_blank" rel="noopener" class="cta cta-addr">
+        View on Maps
+      </a>
+      <p class="sub">Tadipatri, AP — 515411</p>
+    </div>
+
+  </div>
+</div>
+
+<hr class="section-divider"/>
+
+<!-- ── GET INVOLVED ── -->
+<div class="involve-wrap">
+  <div class="involve-header">
+    <div class="section-tag">Get involved</div>
+    <h2>Want to make a <em>difference</em>?</h2>
+    <p>Sponsor our programs or volunteer as a facilitator — every contribution changes a child's future.</p>
+  </div>
+
+  <div class="involve-grid">
+
+    <div class="involve-card">
+      <div class="sponsor-icon">🤝</div>
+      <h3><strong>Sponsor</strong> a student or a program</h3>
+      <p>Your support helps a rural student access quality education and life skills they would never get otherwise. Every contribution — big or small — goes directly to the field.</p>
+      <div class="sponsor-preview">
+        🎓 Fund a program session, sponsor a student's learning materials, or partner with us for CSR. We'll reach out personally to discuss how we can work together.
+      </div>
+      <div>
+        <a href="https://wa.me/919398177507?text=Namaste!%20I%20want%20to%20sponsor%20a%20student%20or%20a%20program%20at%20Vidya%20The%20Change.%20Please%20contact%20me.%20Thank%20you." target="_blank" rel="noopener" class="btn-wa">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:admin@vidyathechange.org?subject=Sponsorship%20Interest&body=Namaste!%20I%20want%20to%20sponsor%20a%20student%20or%20a%20program%20at%20Vidya%20The%20Change.%20Please%20contact%20me.%20Thank%20you." class="btn-email">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+
+    <div class="involve-card">
+      <h3><strong>Volunteer</strong> or Partner with us</h3>
+      <p>Volunteer as a facilitator, bring us to your school, or partner for CSR. Tell us how you'd like to help.</p>
+      <div class="vol-form">
+        <input type="text" id="vol-name" placeholder="Your name"/>
+        <input type="email" id="vol-email" placeholder="Email address"/>
+        <span class="vol-inline-err" id="vol-emailErr"></span>
+        <input type="tel" id="vol-phone" placeholder="WhatsApp number (optional)" maxlength="10"/>
+        <span class="vol-inline-err" id="vol-phoneErr"></span>
+        <select id="vol-role">
+          <option value="">I want to…</option>
+          <option>Volunteer as a facilitator</option>
+          <option>Bring programs to my school</option>
+          <option>CSR / corporate partnership</option>
+          <option>Spread the word / media</option>
+        </select>
+        <textarea id="vol-message" placeholder="Tell us more about how you'd like to help…" rows="3"></textarea>
+        <input type="text" id="vol-honeypot" name="website" tabindex="-1" autocomplete="off"
+          style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"/>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <label style="font-size:12px;color:var(--text);white-space:nowrap;">Quick check: What is <strong id="volMathQ"></strong>?</label>
+          <input type="text" id="vol-math" placeholder="Answer" maxlength="3" autocomplete="off" style="width:80px"/>
+        </div>
+        <button class="vol-submit" id="vol-submit">Submit →</button>
+        <div class="vol-err" id="vol-err"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="form-success" id="volSuccessOverlay">
+  <div class="form-success-icon">🙏</div>
+  <h3>Thank you!</h3>
+  <p>Thanks for your interest to be a part of Vidya The Change. We will reach out as soon as possible.</p>
+  <button class="form-success-again" id="submitAnother">Submit another response →</button>
+</div>
+
+<script src="/contact.js"></script>
+</body>
+</html>

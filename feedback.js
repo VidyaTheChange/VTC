@@ -24,10 +24,15 @@ document.querySelectorAll('.choice-btn').forEach(btn => {
 });
 
 // Math CAPTCHA
-const _a = Math.floor(Math.random() * 9) + 1;
-const _b = Math.floor(Math.random() * 9) + 1;
-document.getElementById('mathQ').textContent = _a + ' + ' + _b;
-const _ans = _a + _b;
+let _ans;
+function generateCaptcha() {
+  const a = Math.floor(Math.random() * 9) + 1;
+  const b = Math.floor(Math.random() * 9) + 1;
+  document.getElementById('mathQ').textContent = a + ' + ' + b;
+  document.getElementById('mathAns').value = '';
+  _ans = a + b;
+}
+generateCaptcha();
 
 // Submit
 document.getElementById('submitBtn').addEventListener('click', async () => {
@@ -88,8 +93,10 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
 
     if (r.ok || r.status === 201) {
       localStorage.setItem(RATE_KEY, Date.now().toString());
-      document.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
-      succ.style.display = 'flex';
+      document.querySelectorAll('.form-card').forEach(c => c.classList.add('disabled-form'));
+      btn.textContent = 'Submitted ✓';
+      succ.style.display = 'block';
+      succ.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       throw new Error();
     }
@@ -105,3 +112,18 @@ function showErr(msg) {
   err.textContent = msg;
   err.style.display = 'block';
 }
+
+// Submit another response
+document.getElementById('submitAnother').addEventListener('click', () => {
+  document.getElementById('successBox').style.display = 'none';
+  document.querySelectorAll('.form-card').forEach(c => c.classList.remove('disabled-form'));
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').textContent = 'Submit Feedback →';
+  // Clear all inputs and selections
+  document.querySelectorAll('.form-card input:not([type=radio]):not([type=hidden]), .form-card select, .form-card textarea').forEach(el => { el.value = ''; });
+  document.querySelectorAll('input[name="rating"]').forEach(r => { r.checked = false; });
+  document.getElementById('ratingLabel').textContent = 'Tap a star to rate';
+  document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+  generateCaptcha();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});

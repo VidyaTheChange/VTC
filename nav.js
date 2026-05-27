@@ -190,8 +190,7 @@ nav.scrolled .nav-logo img{height:56px;}
     <a href="/programs/" data-page="programs">Programs</a>
     <a href="/impact/" data-page="impact">Impact</a>
     <a href="/team/" data-page="team">Our Team</a>
-    <a href="/#involve" data-page="involve">Get Involved</a>
-    <a href="/#contact" data-page="contact">Contact</a>
+    <a href="/contact/" data-page="contact">Contact</a>
   </div>
   <div class="nav-right">
     <a href="/register/" class="nav-register">Student Registration</a>
@@ -207,8 +206,7 @@ nav.scrolled .nav-logo img{height:56px;}
   <a href="/programs/">Programs</a>
   <a href="/impact/">Impact</a>
   <a href="/team/">Our Team</a>
-  <a href="/#involve">Get Involved</a>
-  <a href="/#contact">Contact</a>
+  <a href="/contact/">Contact</a>
   <a href="/register/" class="mob-cta">Student Registration</a>
 </div>
 `;
@@ -344,12 +342,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-center a').forEach(a => {
     const page = a.getAttribute('data-page');
     if (
-      (page === 'home'    && onHome && !hash) ||
-      (page === 'involve' && (path.includes('register') || (onHome && hash === '#involve'))) ||
-      (page === 'contact' && onHome && hash === '#contact') ||
+      (page === 'home'     && onHome && !hash) ||
       (page === 'programs' && path.includes('programs')) ||
       (page === 'impact'   && path.includes('impact')) ||
-      (page === 'team'     && path.includes('team'))
+      (page === 'team'     && path.includes('team')) ||
+      (page === 'contact'  && path.includes('contact'))
     ) {
       a.classList.add('active');
     }
@@ -361,6 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '/programs/'  : 'Programs',
       '/impact/'    : 'Our Impact',
       '/team/'      : 'Our Team',
+      '/contact/'   : 'Contact',
       '/register/'  : 'Student Registration',
       '/feedback/'  : 'Share Feedback',
       '/privacy/'   : 'Privacy Policy'

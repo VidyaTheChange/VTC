@@ -96,8 +96,12 @@ async function submitForm() {
 
     if (r.ok || r.status === 201) {
       localStorage.setItem(RATE_KEY, Date.now().toString());
-      document.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
-      success.style.display = 'flex';
+      // Disable all form inputs
+      document.querySelectorAll('.form-card input:not(#honeypot), .form-card select, .form-card textarea').forEach(el => { el.disabled = true; });
+      btn.textContent = 'Submitted ✓';
+      // Show inline success
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       throw new Error();
     }
@@ -110,12 +114,33 @@ async function submitForm() {
 }
 
 // Math CAPTCHA
-const _a = Math.floor(Math.random() * 9) + 1;
-const _b = Math.floor(Math.random() * 9) + 1;
-document.getElementById('mathQ').textContent = _a + ' + ' + _b;
-const _ans = _a + _b;
+let _ans;
+function generateCaptcha() {
+  const a = Math.floor(Math.random() * 9) + 1;
+  const b = Math.floor(Math.random() * 9) + 1;
+  document.getElementById('mathQ').textContent = a + ' + ' + b;
+  document.getElementById('mathAns').value = '';
+  _ans = a + b;
+}
+generateCaptcha();
 
 document.getElementById('submitBtn').addEventListener('click', submitForm);
+
+// Submit another registration
+document.getElementById('submitAnother').addEventListener('click', () => {
+  document.getElementById('successBox').style.display = 'none';
+  document.querySelectorAll('.form-card input:not(#honeypot), .form-card select, .form-card textarea').forEach(el => {
+    el.disabled = false;
+    el.value = '';
+    el.classList.remove('valid', 'invalid');
+  });
+  document.getElementById('consentCheck').checked = false;
+  document.querySelectorAll('.inline-err').forEach(el => el.textContent = '');
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').textContent = 'Submit Registration →';
+  generateCaptcha();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // DOB auto-format: types as DD/MM/YYYY
 document.getElementById('dob').addEventListener('input', function() {

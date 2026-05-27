@@ -664,33 +664,11 @@ section{padding:5rem 2.5rem}
         </div>
         <p style="font-size:10px;color:var(--muted);margin-top:0.6rem;text-align:center">We'll get in touch as soon as possible</p>
       </div>
-      <div class="involve-card volunteer">
-        <h3><strong>Get</strong> Involved</h3>
-        <p>Volunteer as a facilitator, bring us to your school, or partner for CSR. Tell us how you'd like to help.</p>
-        <div class="vol-form">
-          <input type="text" id="vol-name" placeholder="Your name"/>
-          <input type="email" id="vol-email" placeholder="Email address"/>
-          <span class="vol-inline-err" id="vol-emailErr"></span>
-          <input type="tel" id="vol-phone" placeholder="WhatsApp number (optional)" maxlength="10"/>
-          <span class="vol-inline-err" id="vol-phoneErr"></span>
-          <select id="vol-role">
-            <option value="">I want to…</option>
-            <option>Volunteer as a facilitator</option>
-            <option>Bring programs to my school</option>
-            <option>CSR / corporate partnership</option>
-            <option>Spread the word / media</option>
-          </select>
-          <textarea id="vol-message" placeholder="Tell us more about how you'd like to help…" rows="3"></textarea>
-          <input type="text" id="vol-honeypot" name="website" tabindex="-1" autocomplete="off"
-            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"/>
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <label style="font-size:12px;color:var(--text);white-space:nowrap;">What is <strong id="volMathQ"></strong>?</label>
-            <input type="text" id="vol-math" placeholder="Answer" maxlength="3" autocomplete="off" style="width:80px"/>
-          </div>
-          <button class="btn-primary" id="vol-submit">Submit →</button>
-          <div id="vol-msg" style="font-size:12px;color:var(--green);display:none;font-weight:600">✓ Thank you! We will reach out soon.</div>
-          <div id="vol-err" style="font-size:12px;color:#c0392b;display:none"></div>
-        </div>
+      <div class="involve-card volunteer" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1rem;">
+        <div style="font-size:2rem;line-height:1">🙋</div>
+        <h3><strong>Volunteer</strong> or Partner with us</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0">Volunteer as a facilitator, bring us to your school, or partner for CSR. Fill in a quick form and our team will reach out to you personally.</p>
+        <a href="/contact/" class="btn-primary" style="margin-top:0.5rem">Get Involved →</a>
       </div>
     </div>
   </div>
@@ -726,13 +704,6 @@ section{padding:5rem 2.5rem}
     <p style="font-size:11px;color:var(--muted)">+91 93981 77507 · admin@vidyathechange.org · Typically replies within a few hours</p>
   </div>
 </section>
-
-<div class="vol-success-overlay" id="volSuccessOverlay">
-  <div class="vol-success-box">
-    <h3>Thank you! 🙏</h3>
-    <p>Thanks for your interest to be a part of Vidya The Change. We will reach out as soon as possible.</p>
-  </div>
-</div>
 
 <script src="/index.js"></script>
 </body>
