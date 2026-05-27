@@ -210,7 +210,7 @@ h2 strong{font-weight:700}
 section{padding:5rem 2.5rem}
 .section-inner{max-width:1100px;margin:0 auto}
 .prog-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  display:grid;grid-template-columns:repeat(3,1fr);
   gap:1rem;margin-bottom:2.25rem;
 }
 .prog-card{
@@ -274,7 +274,7 @@ section{padding:5rem 2.5rem}
 .how-step p{font-size:12px;color:var(--muted);line-height:1.55}
 
 /* ── STORIES ── */
-.stories{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .story{
   background:#fff;border:1px solid var(--border);
   border-radius:12px;padding:1.75rem;transition:border-color 0.2s;
@@ -375,6 +375,7 @@ section{padding:5rem 2.5rem}
   .how-wrap{grid-template-columns:1fr 1fr}
   .reg-cta-inner{flex-direction:column;text-align:center}
   .reg-cta p{max-width:100%}
+  .stories{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   .hero{padding:5rem 1.25rem 3rem}
@@ -395,7 +396,11 @@ section{padding:5rem 2.5rem}
   .how-wrap{grid-template-columns:1fr}
   .how-step{border-right:none;border-bottom:1px solid var(--border)}
   .how-step:last-child{border-bottom:none}
+  .prog-grid{grid-template-columns:1fr 1fr}
   .stories{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .prog-grid{grid-template-columns:1fr}
 }
 </style>
 <script src="/nav.js"></script>
