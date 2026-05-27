@@ -12,13 +12,16 @@ document.querySelectorAll('input[name="rating"]').forEach(r => {
   });
 });
 
-// Choice button selection
-function selectChoice(el, rowId, hiddenId) {
-  document.querySelectorAll('#' + rowId + ' .choice-btn').forEach(b => b.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById(hiddenId).value = el.textContent.trim();
-}
-window.selectChoice = selectChoice;
+// Choice button selection via event delegation
+document.querySelectorAll('.choice-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const rowId   = btn.dataset.row;
+    const hiddenId = btn.dataset.hidden;
+    document.querySelectorAll('#' + rowId + ' .choice-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById(hiddenId).value = btn.textContent.trim();
+  });
+});
 
 // Math CAPTCHA
 const _a = Math.floor(Math.random() * 9) + 1;

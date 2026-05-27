@@ -163,33 +163,33 @@ nav.scrolled .nav-logo img{height:56px;}
 
 <div class="nav-accent"></div>
 <nav id="vtc-navbar">
-  <a class="nav-logo" href="index.html">
-    <img src="images/logo.png" alt="Vidya The Change">
+  <a class="nav-logo" href="/">
+    <img src="/images/logo.png" alt="Vidya The Change">
   </a>
   <div class="nav-center">
-    <a href="index.html" data-page="home">Home</a>
-    <a href="programs.html" data-page="programs">Programs</a>
-    <a href="impact.html" data-page="impact">Impact</a>
-    <a href="team.html" data-page="team">Our Team</a>
-    <a href="index.html#involve" data-page="involve">Get Involved</a>
-    <a href="index.html#contact" data-page="contact">Contact</a>
+    <a href="/" data-page="home">Home</a>
+    <a href="/programs/" data-page="programs">Programs</a>
+    <a href="/impact/" data-page="impact">Impact</a>
+    <a href="/team/" data-page="team">Our Team</a>
+    <a href="/#involve" data-page="involve">Get Involved</a>
+    <a href="/#contact" data-page="contact">Contact</a>
   </div>
   <div class="nav-right">
-    <a href="register.html" class="nav-register">Student Registration</a>
-    <button class="hamburger" id="vtc-hamburger" onclick="vtcToggleMenu()">
+    <a href="/register/" class="nav-register">Student Registration</a>
+    <button class="hamburger" id="vtc-hamburger">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="vtc-mobile-menu">
-  <button class="mob-close" onclick="vtcToggleMenu()">✕</button>
-  <a href="programs.html" onclick="vtcToggleMenu()">Programs</a>
-  <a href="impact.html" onclick="vtcToggleMenu()">Impact</a>
-  <a href="team.html" onclick="vtcToggleMenu()">Our Team</a>
-  <a href="index.html#involve" onclick="vtcToggleMenu()">Get Involved</a>
-  <a href="index.html#contact" onclick="vtcToggleMenu()">Contact</a>
-  <a href="register.html" class="mob-cta" onclick="vtcToggleMenu()">Student Registration</a>
+  <button class="mob-close" id="vtc-mob-close">✕</button>
+  <a href="/programs/">Programs</a>
+  <a href="/impact/">Impact</a>
+  <a href="/team/">Our Team</a>
+  <a href="/#involve">Get Involved</a>
+  <a href="/#contact">Contact</a>
+  <a href="/register/" class="mob-cta">Student Registration</a>
 </div>
 `;
 
@@ -252,7 +252,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo"><img src="images/logo.png" alt="Vidya The Change"/></div>
+      <div class="footer-logo"><img src="/images/logo.png" alt="Vidya The Change"/></div>
       <div class="footer-tagline">Identifying and nurturing unique skills of students in rural areas — through innovative teaching and purposeful learning. Founded 2022, Tadipatri AP.</div>
       <div class="social-links">
         <a class="soc-btn instagram" href="https://www.instagram.com/vidyathechange?igsh=MWY5YmdlMXNnOGJpNA==" target="_blank" rel="noopener" title="Instagram">
@@ -269,20 +269,20 @@ footer{background:#fff;border-top:1px solid var(--border);padding:0}
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="impact.html">Our Impact</a></li>
-        <li><a href="team.html">Our Team</a></li>
-        <li><a href="register.html">Student Registration</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/programs/">Programs</a></li>
+        <li><a href="/impact/">Our Impact</a></li>
+        <li><a href="/team/">Our Team</a></li>
+        <li><a href="/register/">Student Registration</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
-        <li><a href="index.html#involve">Get Involved</a></li>
-        <li><a href="index.html#contact">Contact Us</a></li>
-        <li><a href="feedback.html">Share Feedback</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="/#involve">Get Involved</a></li>
+        <li><a href="/#contact">Contact Us</a></li>
+        <li><a href="/feedback/">Share Feedback</a></li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
@@ -310,6 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Insert global footer at bottom of body
   document.body.insertAdjacentHTML('beforeend', VTC_FOOTER);
+
+  // Wire up hamburger and mobile menu (no inline onclick needed)
+  document.getElementById('vtc-hamburger').addEventListener('click', vtcToggleMenu);
+  document.getElementById('vtc-mob-close').addEventListener('click', vtcToggleMenu);
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', vtcToggleMenu));
 
   // Highlight active page
   const path = window.location.pathname;

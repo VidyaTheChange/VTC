@@ -150,9 +150,9 @@ textarea{resize:vertical;min-height:75px}
     <div class="field">
       <label>Did your trainer explain things in a clear and easy way?</label>
       <div class="choice-row" id="trainerRow">
-        <div class="choice-btn" onclick="selectChoice(this,'trainerRow','fb-trainer')">Yes, very clearly</div>
-        <div class="choice-btn" onclick="selectChoice(this,'trainerRow','fb-trainer')">Mostly</div>
-        <div class="choice-btn" onclick="selectChoice(this,'trainerRow','fb-trainer')">Not really</div>
+        <div class="choice-btn" data-row="trainerRow" data-hidden="fb-trainer">Yes, very clearly</div>
+        <div class="choice-btn" data-row="trainerRow" data-hidden="fb-trainer">Mostly</div>
+        <div class="choice-btn" data-row="trainerRow" data-hidden="fb-trainer">Not really</div>
       </div>
       <input type="hidden" id="fb-trainer"/>
     </div>
@@ -160,9 +160,9 @@ textarea{resize:vertical;min-height:75px}
     <div class="field">
       <label>Were you given enough support and guidance throughout?</label>
       <div class="choice-row" id="supportRow">
-        <div class="choice-btn" onclick="selectChoice(this,'supportRow','fb-support')">Yes, enough</div>
-        <div class="choice-btn" onclick="selectChoice(this,'supportRow','fb-support')">Mostly</div>
-        <div class="choice-btn" onclick="selectChoice(this,'supportRow','fb-support')">Could be better</div>
+        <div class="choice-btn" data-row="supportRow" data-hidden="fb-support">Yes, enough</div>
+        <div class="choice-btn" data-row="supportRow" data-hidden="fb-support">Mostly</div>
+        <div class="choice-btn" data-row="supportRow" data-hidden="fb-support">Could be better</div>
       </div>
       <input type="hidden" id="fb-support"/>
     </div>
@@ -180,9 +180,9 @@ textarea{resize:vertical;min-height:75px}
     <div class="field">
       <label>After this program, do you feel more confident?</label>
       <div class="choice-row" id="confidentRow">
-        <div class="choice-btn" onclick="selectChoice(this,'confidentRow','fb-confident')">Yes, much more</div>
-        <div class="choice-btn" onclick="selectChoice(this,'confidentRow','fb-confident')">A little more</div>
-        <div class="choice-btn" onclick="selectChoice(this,'confidentRow','fb-confident')">No change</div>
+        <div class="choice-btn" data-row="confidentRow" data-hidden="fb-confident">Yes, much more</div>
+        <div class="choice-btn" data-row="confidentRow" data-hidden="fb-confident">A little more</div>
+        <div class="choice-btn" data-row="confidentRow" data-hidden="fb-confident">No change</div>
       </div>
       <input type="hidden" id="fb-confident"/>
     </div>
@@ -190,9 +190,9 @@ textarea{resize:vertical;min-height:75px}
     <div class="field">
       <label>Would you recommend this program to your friends?</label>
       <div class="choice-row" id="recommendRow">
-        <div class="choice-btn" onclick="selectChoice(this,'recommendRow','fb-recommend')">Yes, definitely!</div>
-        <div class="choice-btn" onclick="selectChoice(this,'recommendRow','fb-recommend')">Maybe</div>
-        <div class="choice-btn" onclick="selectChoice(this,'recommendRow','fb-recommend')">No</div>
+        <div class="choice-btn" data-row="recommendRow" data-hidden="fb-recommend">Yes, definitely!</div>
+        <div class="choice-btn" data-row="recommendRow" data-hidden="fb-recommend">Maybe</div>
+        <div class="choice-btn" data-row="recommendRow" data-hidden="fb-recommend">No</div>
       </div>
       <input type="hidden" id="fb-recommend"/>
     </div>
