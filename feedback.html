@@ -305,9 +305,9 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
     });
 
     if (r.ok || r.status === 201) {
+      document.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
       succ.style.display = 'block';
-      btn.style.display  = 'none';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const body = await r.text();
       throw new Error(`HTTP ${r.status}: ${body}`);

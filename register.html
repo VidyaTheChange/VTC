@@ -322,8 +322,9 @@ async function submitForm() {
     });
 
     if (r.ok || r.status === 201) {
+      document.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
       success.style.display = 'block';
-      btn.style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       ['fullname','fathername','mothername','dob','gender','phone','email',
        'address','school','classyear','medium','smartphone','laptop',
        'program','reason','source','mathAns'].forEach(id => {
